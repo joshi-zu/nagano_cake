@@ -65,7 +65,7 @@ ActiveRecord::Schema.define(version: 2025_01_16_040406) do
     t.string "name"
     t.text "introduction"
     t.integer "price"
-    t.boolean "sale_status"
+    t.boolean "is_active"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -50,12 +50,12 @@
       </div>
 
       <div class = "form_groupe row">
-        <label for"sale_status", class="col-sm-3 col-form-label">販売ステータス</label><br>
+        <label for"is_active", class="col-sm-3 col-form-label">販売ステータス</label><br>
         <div class="col-sm-8">
-          <%= form.radio_button :sale_status, :true %>
-          <%= form.label :sale_status, "販売中", {value: :true, style: "display: inline-block;"} %>
-          <%= form.radio_button :sale_status, :false %>
-          <%= form.label :sale_status, "販売停止中", {value: :false, style: "display: inline-block;"} %>
+          <%= form.radio_button :is_active, :true %>
+          <%= form.label :is_active, "販売中", {value: :true, style: "display: inline-block;"} %>
+          <%= form.radio_button :is_active, :false %>
+          <%= form.label :is_active, "販売停止中", {value: :false, style: "display: inline-block;"} %>
         </div>
       </div>
       <%= form.submit '新規登録', class: "btn btn-sm btn-success" %>
