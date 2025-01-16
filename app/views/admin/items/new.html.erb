@@ -1,34 +1,62 @@
 <div class = "container">
   <div class = "row">
-    <div class = "col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-    <h3>新規商品登録</h3>
+    <div class = "col-12">
+      <span style="padding: 5px 10px;">
+        <h3>新規商品登録</h3>
+      </span>
+    </div>
+  </div>
+
+  <div class = "row">
+    <div class = "col-sm-12 col-md-8 col-lg-6 px-5 px-sm-0 mx-auto">
     <%= form_with(model: @item, url: admin_items_path, local: true) do |form| %>
-      <div class = "form-groupe">
-        <label for"name">商品画像</label>
-        <%= form.file_field :image, accept: "image/*" %>
+
+      <div class="form-group row">
+        <label for="image" class="col-sm-3 col-form-label">商品画像</label>
+        <div class="col-sm-8">
+          <%= form.file_field :image, accept: "image/*", class: "form-control-file" %>
+        </div>
       </div>
-      <div class = "form_groupe">
-        <label for"name">商品名</label><br>
-        <%= form.text_field :name,placeholder:"商品名", class:"form-control" %><br>
+
+      <div class = "form_groupe row">
+        <label for"name", class="col-sm-3 col-form-label">商品名</label>
+        <div class="col-sm-8">
+          <%= form.text_field :name,placeholder:"商品名", class:"form-control" %><br>
+        </div>
       </div>
-      <div class = "form_groupe">
-        <label for"introduction">商品説明</label><br>
-        <%= form.text_area :introduction, placeholder:"ここに説明文を記述します", class:"form-control" %>
+
+      <div class = "form_groupe row">
+        <label for"introduction", class="col-sm-3 col-form-label">商品説明</label><br>
+        <div class="col-sm-8">
+          <%= form.text_area :introduction, placeholder:"ここに説明文を記述します", class:"form-control" %><br>
+        </div>
       </div>
-        <div class = "form_groupe">
-        <label for"genre_id">ジャンル</label><br>
-      <%= form.number_field :genre_id %><br>
+
+      <div class = "form_groupe row">
+        <label for"genre_id", class="col-sm-3 col-form-label">ジャンル</label><br>
+        <div class="col-sm-8">
+          <%= form.number_field :genre_id, placeholder:" ", class:"form-control" %><br>
+        </div>
       </div>
-      <div class = "form_groupe">
-        <label for"price">税抜価格</label><br>
-        <%= form.number_field :price,placeholder:"1000", class:"form-control" %>円<br>
+
+      <div class = "form_groupe row">
+        <label for"price", class="col-sm-3 col-form-label">税抜価格</label><br>
+        <div class="col-sm-8">
+          <%= form.number_field :price,placeholder:"1000", class:"form-control" %><br>
+        </div>
+        <div class="col-sm-1">
+          円
+        </div>
       </div>
-      <div class = "form_groupe">
-        <label for"sale_status">販売ステータス</label><br>
-        <%= form.radio_button :sale_status, :true %>
-        <%= form.label :sale_status, "販売中", {value: :true, style: "display: inline-block;"} %>
-        <%= form.radio_button :sale_status, :false %>
-        <%= form.label :sale_status, "販売停止中", {value: :false, style: "display: inline-block;"} %>
+
+      <div class = "form_groupe row">
+        <label for"sale_status", class="col-sm-3 col-form-label">販売ステータス</label><br>
+        <div class="col-sm-8">
+          <%= form.radio_button :sale_status, :true %>
+          <%= form.label :sale_status, "販売中", {value: :true, style: "display: inline-block;"} %>
+          <%= form.radio_button :sale_status, :false %>
+          <%= form.label :sale_status, "販売停止中", {value: :false, style: "display: inline-block;"} %>
+        </div>
       </div>
       <%= form.submit '新規登録', class: "btn btn-sm btn-success" %>
     <% end %>
