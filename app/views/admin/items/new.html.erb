@@ -1,37 +1,10 @@
 <div class = "container">
-  <div class = "row">
-    <div class = "col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-    <h3>新規商品登録</h3>
-    <%= form_with(model: @item, url: admin_items_path, local: true) do |form| %>
-      <div class = "form-groupe">
-        <label for"name">商品画像</label>
-        <%= form.file_field :image, accept: "image/*" %>
-      </div>
-      <div class = "form_groupe">
-        <label for"name">商品名</label><br>
-        <%= form.text_field :name,placeholder:"商品名", class:"form-control" %><br>
-      </div>
-      <div class = "form_groupe">
-        <label for"introduction">商品説明</label><br>
-        <%= form.text_area :introduction, placeholder:"ここに説明文を記述します", class:"form-control" %>
-      </div>
-        <div class = "form_groupe">
-        <label for"genre_id">ジャンル</label><br>
-      <%= form.number_field :genre_id %><br>
-      </div>
-      <div class = "form_groupe">
-        <label for"price">税抜価格</label><br>
-        <%= form.number_field :price,placeholder:"1000", class:"form-control" %>円<br>
-      </div>
-      <div class = "form_groupe">
-        <label for"sale_status">販売ステータス</label><br>
-        <%= form.radio_button :sale_status, :true %>
-        <%= form.label :sale_status, "販売中", {value: :true, style: "display: inline-block;"} %>
-        <%= form.radio_button :sale_status, :false %>
-        <%= form.label :sale_status, "販売停止中", {value: :false, style: "display: inline-block;"} %>
-      </div>
-      <%= form.submit '新規登録', class: "btn btn-sm btn-success" %>
-    <% end %>
+  <div class = "row-10">
+    <div class = "col">
+      <span style="padding: 5px 10px;">
+        <h3>新規商品登録</h3>
+      </span>
     </div>
   </div>
-</div>
+
+  <%= render 'form', item: @item %>
