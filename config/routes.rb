@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   namespace :admin do
     resources :items
+    resources :genres, only: [:index, :create, :edit, :update, :destroy]
   end
-  devise_for :customers
+  devise_for :customers 
   root :to =>"homes#top"
   get "/about" => "homes#about", as: "about"
 
