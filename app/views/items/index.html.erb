@@ -11,15 +11,20 @@
 
     <div class="col-md-8 offset-md-1">
       <h1>商品一覧</h1>
-
-      <% @items.each do |item| %>
-
-        <p>商品画像枠<p/>
-        <p>商品名</p>
-        <p>金額枠</p>
-        
-      <% end %>
-    </div>
+      
+      <div class="row">
+        <% @items.each_slice(4) do |items_row| %>
+          <div class="row">
+            <% items_row.each do |item| %>
+              <div class="col-md-3">
+                <p>商品画像枠</p>
+                <p><%= item.name %></p>
+                <p><%= item.price %></p>
+              </div>
+            <% end %>
+          </div>        
+        <% end %>
+      </div>
 
     <%= paginate @items %>
 
