@@ -26,7 +26,7 @@
       <div class = "form-groupe row">
         <label for"genre", class="col-sm-3 col-form-label">ジャンル</label><br>
         <div class="col-sm-8">
-          <%= form.select :amount, [['いち',1], ['に',2], ['さん',3]] %><br>
+          <%= form.collection_select :genre_id, Genre.all, :id, :name, include_blank: true %><br>
         </div>
       </div>
 
