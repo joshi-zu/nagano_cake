@@ -12,5 +12,33 @@
     <tr>
   </thead>
   <tbody>
-  </tbody>
+    <% @items.each do |item| %>
+      <tr>
+        <td>
+          <span>
+            <%= item.id %>
+          </span>
+        </td>
+        <td>
+          <span>
+            <%= item.name %>
+          </span>
+        </td>
+        <td>
+          <span>
+            <%= item.price %>
+          </span>
+        </td>
+        <td>
+          <span>
+            
+          </span>
+        </td>
+        <td>
+          <span>
+            <%= item.is_active %>
+          </span>
+        </td>
+      </tr>
+      <% end %>
 </table>

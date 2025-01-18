@@ -78,12 +78,11 @@ ActiveRecord::Schema.define(version: 2025_01_17_055542) do
   end
 
   create_table "items", force: :cascade do |t|
-    t.integer "item_id"
     t.integer "genre_id"
     t.string "name"
     t.text "introduction"
     t.integer "price"
-    t.boolean "sale_status"
+    t.boolean "is_active"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
