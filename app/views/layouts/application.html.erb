@@ -34,7 +34,7 @@
               <%= link_to 'ジャンル一覧', about_path, class: 'btn btn-outline-dark' %>
             </li>
             <li class="nav-item">
-              <%= link_to 'ログアウト', destroy_admin_session_path, class: 'btn btn-outline-dark' %>
+              <%= link_to 'ログアウト', destroy_admin_session_path, class: 'btn btn-outline-dark', method: :delete %>
             </li>
 
           <% elsif customer_signed_in? %>
