@@ -43,6 +43,25 @@
           </tr>
         </tbody>
       </table>
+      
+      <div class="row mt-4">
+        <div class="col-sm-2 pt-1">
+          <h5 class="font-weight-bold">配送先</h5>
+        </div>
+        <div class="col-sm-3">
+          <%= link_to '一覧を見る', edit_customer_path(@customer.id), class: 'btn btn-primary' %>
+        </div>
+      </div>
+        
+      <div class="row my-4">
+        <div class="col-sm-2 pt-1">
+          <h5 class="font-weight-bold">注文履歴</h5>
+        </div>
+        <div class="col-sm-3">
+          <%= link_to '一覧を見る', edit_customer_path(@customer.id), class: 'btn btn-primary' %>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
