@@ -30,6 +30,9 @@
               </span>
             </td>
             <td>
+              <%= link_to edit_admin_genre_path(genre.id) do %>
+              <button type="edit" class="btn btn-sm btn-success">編集する　</button>
+              <% end %>
             </td>
           </tr>
           <% end %>
