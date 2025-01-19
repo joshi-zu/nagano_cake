@@ -1,1 +1,25 @@
 
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="d-flex align-items-center">
+        <table class="table table-borderless">
+
+        <div>
+          <% if @item.item_image.attached? %>
+          <%= image_tag @item.item_image, size: "300x200" %>
+          <% else %>
+            <%= image_tag 'noimage', size: "300x200" %>
+          <% end %>
+        </div>
+
+        <div>
+          商品の説明
+        </div>
+
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
