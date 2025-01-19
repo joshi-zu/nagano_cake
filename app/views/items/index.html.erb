@@ -16,10 +16,16 @@
         <% @items.each_slice(4) do |items_row| %>
           <div class="row">
             <% items_row.each do |item| %>
-              <div class="col-md-3">
-                <p>商品画像枠</p>
+              <div class="col">
+                <p>
+                  <% if item.item_image.attached? %>
+                    <%= image_tag item.item_image, size: "150x100" %>
+                  <% else %>
+                    <%= image_tag 'noimage', size: "150x100" %>
+                  <% end %>
+                </p>
                 <p><%= item.name %></p>
-                <p><%= item.price %></p>
+                <p>¥<%= item.price %></p>
               </div>
             <% end %>
           </div>        
