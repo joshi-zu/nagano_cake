@@ -23,4 +23,7 @@ class Customer < ApplicationRecord
   def active_for_authentication?
     super && (is_active == true)
   end
+
+  has_many :cart_items
+  
 end
