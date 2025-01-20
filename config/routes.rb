@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
   resources :items, only: [:index, :show]
   resources :customers, only: [:show, :edit, :update, :withdraw]
-  resources :addresses, only: [:index, :edit]
+  resources :addresses, only: [:index, :edit, :update, :destroy, :create ]
   resources :orders, only: [:confirm, :index, :new, :show, :thanks]
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
