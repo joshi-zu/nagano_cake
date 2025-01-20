@@ -18,14 +18,16 @@
             <% items_row.each do |item| %>
               <div class="col">
                 <p>
-                  <% if item.item_image.attached? %>
-                    <%= image_tag item.item_image, size: "150x100" %>
-                  <% else %>
-                    <%= image_tag 'noimage', size: "150x100" %>
+                  <%=  link_to item_path(item) do %>
+                    <% if item.item_image.attached? %>
+                      <%= image_tag item.item_image, size: "150x100" %>
+                    <% else %>
+                      <%= image_tag 'noimage', size: "150x100" %>
+                    <% end %>
                   <% end %>
                 </p>
-                <p><%= item.name %></p>
-                <p>¥<%= item.price %></p>
+                <p><%= link_to item.name, item_path(item) %></p>
+                <p>¥<%= number_with_delimiter(item.price, delimiter: ',') %></p>
               </div>
             <% end %>
           </div>        
