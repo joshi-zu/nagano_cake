@@ -7,6 +7,9 @@ class CustomersController < ApplicationController
     @customer = Customer.find(params[:id])
   end
 
+  def updated
+    @customer = Customer.find
+
   def unsubscribe
   end
 end
