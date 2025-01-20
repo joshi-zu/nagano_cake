@@ -9,28 +9,28 @@
       <%= form_with model: @customer do |f| %>
         <div class="form-group row">
           <label for="name" class="col-sm-3 col-form-label">氏名</label>
-          <div class="row mr-5">
+          <div class="row mr-5 ml-1">
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="name" name="customer[last_name]">
+              <%= f.text_field :last_name %>
             </div>
           </div>
           <div class="row">
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="name" name="customer[first_name]">
+              <%= f.text_field :first_name %>
             </div>
           </div>
         </div>
 
         <div class="form-group row">
           <label for="name_kana" class="col-sm-3 col-form-label">フリガナ</label>
-          <div class="row mr-5">
+          <div class="row mr-5 ml-1">
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="name_kana" name="customer[last_name_kana]">
+              <%= f.text_field :last_name_kana %>
             </div>
           </div>
           <div class="row">
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="name_kana" name"customer[first_name_kana]">
+              <%= f.text_field :first_name_kana %>
             </div>
           </div>
         </div>
@@ -38,28 +38,28 @@
         <div class="form-group row">
           <label for="postal_code" class="col-sm-3 col-form-label">郵便番号</label>
           <div class="col-sm-4">
-            <input type="text" class="form-control" id="postal_code" name="customer[postal_code]">
+            <%= f.text_field :postal_code %>
           </div>
         </div>
 
         <div class="form-group row">
           <label for="address" class="col-sm-3 col-form-label">住所</label>
           <div class="col-sm-8">
-            <input type="text" class="form-control" id="address" name="customer[address]">
+            <%= f.text_field :address %>
           </div>
         </div>
 
         <div class="form-group row">
           <label for="phone_number" class="col-sm-3 col-form-label">電話番号</label>
           <div class="col-sm-4">
-            <input type="tel" class="form-control" id="phone_number" name="customer[phone_number]">
+            <%= f.telephone_field :phone_number %>
           </div>
         </div>
   
         <div class="form-group row">
           <label for="email" class="col-sm-3 col-form-label">メールアドレス</label>
           <div class="col-sm-4">
-            <input type="email" class="form-control" id="email" name="customer[email]">
+            <%= f.email_field :email %>
           </div>
         </div>
 
