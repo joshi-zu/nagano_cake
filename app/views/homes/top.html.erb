@@ -11,7 +11,7 @@
 
 
 
-    <div class="col-md-8 offset-md-1">
+    <div class="col-md-9">
     <table class="table">
       <div class="bg-image" style="position: relative; background-image: url('<%= asset_path('pexels-juliomelanda.jpg') %>'); background-size: cover; background-position: center; height: 300px;  display: flex; justify-content: center; align-items: center;">
         <div class="bg-image" style="z-index: 1; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60%; height: 150px; background-image: url('<%= asset_path('white.png') %>'); background-size: cover; background-position: center; display: flex; justify-content: center; align-items: center;"></div>
@@ -28,20 +28,32 @@
         </div>
       </div>
 
-      <div>
+      <table class="table">
         <tr>
-          <th>新着商品</th>
+          <th colspan="2">新着商品</th>
         </tr>
-      </div>
-      <div>
         <tr>
-          <td>新着商品の枠</td>
+          <% @items.each do |item| %>
+            <td><%= link_to item_path(item.id), class: "text-decoration-none" do %>
+              <div class="card m-2 p-1 card-hover">
+                <% if item.item_image.attached? %>
+                  <%= image_tag url_for(item.item_image), size: "150x100", class: "card-img-top rounded shadow-sm" %>
+                <% else %>
+                  <%= image_tag 'noimage.png', size: "150x100" %>
+                <% end %>
+
+                <div class="card-body text-body">
+                  <h5 class="card-title text-primary"><%= item.name %></h5>
+                  <p class="card-text text-primary">¥<%= item.price %></p>
+                </div>
+              </div>
+            <% end %>
+            </td>
+          <% end %>
         </tr>
-      </div>
-      <div>
-        <tr>
-          <td class="text-right"><%= link_to '全ての商品を見る＞', items_path %></td>
-        </tr>
+      </table>
+      <div class="text-right">
+        <%= link_to '全ての商品を見る＞', items_path %>
       </div>
       </table>
     </div>
