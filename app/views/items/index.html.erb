@@ -24,8 +24,8 @@
                     <%= image_tag 'noimage.png', size: "150x100" %>
                   <% end %>
                 </p>
-                <p><%= item.name %></p>
-                <p>¥<%= item.price %></p>
+                <p><%= link_to item.name, item_path(item) %></p>
+                <p>¥<%= number_with_delimiter(item.price, delimiter: ',') %></p>
               </div>
             <% end %>
           </div>        
