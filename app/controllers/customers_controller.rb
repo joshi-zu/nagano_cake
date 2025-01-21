@@ -13,7 +13,12 @@ class CustomersController < ApplicationController
     redirect_to customer_path(@customer.id)
   end
 
-  def unsubscribe
+  def withdraw
+    @customer = Customer.find(current_customer.id)
+    @customer.update(is_deleted: true)
+    reset_session
+    flash[:notice] = "退会が完了しました"
+    redirect_to root_path
   end
 
   private
