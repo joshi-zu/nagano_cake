@@ -1,2 +1,32 @@
-<h1>Admin::Items#show</h1>
-<p>Find me in app/views/admin/items/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <div>
+      <% if @item.item_image.attached? %>
+        <%= image_tag url_for(@item.item_image), size: "250x200" %>
+      <% else %>
+        <%= image_tag 'noimage.png', size: "250x200" %>
+      <% end %>
+      </div>
+    </div>
+
+    <div class="col-md-5">
+      <table class="table table-borderless">
+        <tr>
+          <td><strong><%= @item.name %></strong></td>
+        </tr>
+        <tr>
+          <td><%= @item.introduction %></td>
+        </tr>
+        <tr><td></td></tr>
+        <tr>
+          <td>¥<%= number_with_delimiter((@item.price * 1.1).round, delimiter: ',') %> (税込)</td>
+        </tr>
+        <tr>
+          <td><%= link_to "カートに入れる", "#", class:"btn btn-success" %></td>
+        </tr>
+      </table>
+    </div>
+
+  </div>
+</div>
