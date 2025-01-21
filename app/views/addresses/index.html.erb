@@ -17,21 +17,23 @@
 
         <div class="form-group row">
           <label for="address" class="col-sm-3 col-form-label">住所</label>
-          <div class="col-sm-8">
+          <div class="col-sm-7">
             <input type="text" class="form-control" id="address" name="address[address]" placeholder="東京都渋谷区代々木神園町0-0">
           </div>
         </div>
 
-        <div class="form-group row">
+        <div class="form-group row mb-5">
           <label for="name" class="col-sm-3 col-form-label">宛名</label>
           <div class="col-sm-4">
             <input type="text" class="form-control" id="name" name="address[name]" placeholder="令和道子">
           </div>
+          <div class="ml-auto col-sm-3">
+            <button type="submit" class="btn btn-success">新規登録</button>
+          </div>
         </div>
-        <button type="submit" class="btn btn-success mb-4">新規登録</button>
       <% end %>
 
-      <table class="table  table-bordered col-sm-8">
+      <table class="table table-bordered col-sm-8">
         <thead>
           <tr>
             <th class="table-active">郵便番号</th>
