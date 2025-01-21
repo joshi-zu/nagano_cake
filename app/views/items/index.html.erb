@@ -10,7 +10,10 @@
     </div>
 
     <div class="col-md-8 offset-md-1">
-      <h1>商品一覧</h1>
+      <div class="d-flex align-items-center">
+        <h2 class="mr-2 d-inline-block">商品一覧</h2>
+        <h4 class="mr-0 mb-0">全<%= @total_items %>件</h4>
+      </div>
       
       <div class="row">
         <% @items.each_slice(4) do |items_row| %>
