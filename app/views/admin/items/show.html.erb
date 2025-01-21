@@ -3,9 +3,9 @@
     <div class="col-md-4">
       <div>
       <% if @item.item_image.attached? %>
-        <%= image_tag url_for(@item.item_image), size: "250x200" %>
+        <%= image_tag url_for(@item.item_image), size: "300x200" %>
       <% else %>
-        <%= image_tag 'noimage.png', size: "250x200" %>
+        <%= image_tag 'noimage.png', size: "300x200" %>
       <% end %>
       </div>
     </div>
@@ -23,7 +23,9 @@
           <td>¥<%= number_with_delimiter((@item.price * 1.1).round, delimiter: ',') %> (税込)</td>
         </tr>
         <tr>
-          <td><%= link_to "カートに入れる", "#", class:"btn btn-success" %></td>
+          <td>
+          <%= link_to "カートに入れる", "#", class:"btn btn-success" %>
+          </td>
         </tr>
       </table>
     </div>
