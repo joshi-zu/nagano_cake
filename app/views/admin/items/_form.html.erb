@@ -26,7 +26,7 @@
       <div class = "form-groupe row">
         <label for"genre", class="col-sm-3 col-form-label">ジャンル</label><br>
         <div class="col-sm-8">
-          <%= form.collection_select :genre_id, Genre.all, :id, :name, include_blank: true %><br>
+          <%= form.collection_select :genre_id, Genre.all, :id, :name, include_blank: '--選択してください--' %><br>
         </div>
       </div>
 
@@ -42,14 +42,14 @@
 
       <div class = "form-groupe row">
         <label for"is_active", class="col-sm-3 col-form-label">販売ステータス</label><br>
-        <div class="col-sm-8">
+        <div class="col-sm-8 ">
           <%= form.radio_button :is_active, :true %>
           <%= form.label :is_active, "販売中", {value: :true, style: "display: inline-block;"} %>
           <%= form.radio_button :is_active, :false %>
           <%= form.label :is_active, "販売停止中", {value: :false, style: "display: inline-block;"} %>
         </div>
       </div>
-      <%= form.submit '　新規登録　', class: "btn btn-sm btn-success" %>
+      <%= form.submit submit_text, class: "btn btn-sm btn-success " %>
     <% end %>
     </div>
   </div>

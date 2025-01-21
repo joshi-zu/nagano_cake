@@ -1,2 +1,10 @@
-<h1>Admin::Items#edit</h1>
-<p>Find me in app/views/admin/items/edit.html.erb</p>
+<div class = "container">
+  <div class = "row-10">
+    <div class = "col">
+      <span style="padding: 5px 10px;">
+        <h3>商品編集</h3>
+      </span>
+    </div>
+  </div>
+
+  <%= render 'form', item: @item, form_url: edit_admin_item_path, submit_text: '変更を保存' %>
