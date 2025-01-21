@@ -25,7 +25,11 @@ Rails.application.routes.draw do
   resources :customers, only: [:show, :edit, :update, :withdraw]
   resources :addresses, only: [:index, :edit, :update, :destroy, :create ]
   resources :orders, only: [:confirm, :index, :new, :show, :thanks]
-  resources :cart_items, only: [:index, :show, :create, :edit, :update, :destroy]
+  resources :cart_items, only: [:index, :create, :update, :destroy] do
+    collection do
+      delete 'destroy_all'
+    end
+  end
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
