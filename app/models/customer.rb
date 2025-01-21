@@ -13,7 +13,7 @@ class Customer < ApplicationRecord
   end
   
   def customer_status
-    if is_active == true
+    if is_deleted == false
       "有効"
     else
       "退会"
@@ -21,7 +21,7 @@ class Customer < ApplicationRecord
   end
 
   def active_for_authentication?
-    super && (is_active == true)
+    super && (is_deleted == false)
   end
 
   has_many :cart_items
