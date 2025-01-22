@@ -55,7 +55,7 @@
             <td><%= @item.introduction %></td>
           </tr>
           <tr>
-            <td><%= @item.genre_id %></td>
+            <td><%= @item.genre.name %></td>
           </tr>
           <tr>
             <td><%= number_with_delimiter((@item.price * 1.1).to_i) %> （<%= number_with_delimiter(@item.price) %>）円</td>

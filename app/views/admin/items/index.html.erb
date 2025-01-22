@@ -6,7 +6,7 @@
     <div class = "col-12">
       <p class = "button style="text-align: right"">
         <%= link_to new_admin_item_path do %>
-          <i class="fa-solid fa-plus"></i>
+          <i class="fa-solid fa-circle-plus fa-xl"></i>
         <% end %>
       </p>
     </div>
@@ -46,7 +46,7 @@
               </td>
               <td>
                 <span>
-                  <%= item.genre_id %>
+                  <%= item.genre&.name %>
                 </span>
               </td>
               <td colspan="10">
