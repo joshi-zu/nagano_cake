@@ -1,2 +1,75 @@
-<h1>Orders#confirm</h1>
-<p>Find me in app/views/orders/confirm.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-7">
+      
+      <div class="col-sm-3 ml-5">
+        <h5 class="table-active">注文情報確認</h5>
+      </div>
+
+      <div class="row">
+        <table class="table table-bordered col-sm-8">
+          <thead>
+            <tr>
+              <th class="table-active">商品名</th>
+              <th class="table-active">単価(税込)</th>
+              <th class="table-active">数量</th>
+              <th class="table-active">小計</th>
+            </tr>
+          </thead>
+          <% @sum = 0 %>
+          <% @cart_items.each do |cart_item| %>
+            <tbody>
+              <tr>
+                <td>
+                  <% if item.item_image.attached? %>
+                    <%= image_tag url_for(item.item_image), size: "150x100" %>
+                  <% else %>
+                    <%= image_tag 'noimage.png', size: "150x100" %>
+                  <% end %>
+                  <%= cart_item.item.name %>
+                </td>
+                <td><%= cart_item.item.with_tax_price %></td>
+                <td><%= cart_item.amount %></td>
+                <% @sum += cart_item.subtotal %>
+                <td><%= @sum %></td>
+              </tr>
+            </tbody>
+          <% end %>
+        </table>
+
+        <table class="table table-bordered col-sm-4">
+          <tbody>
+            <tr>
+              <th scope="row" class="col-sm-3 table-active">送料</th>
+              <td>800</td>
+            </tr>
+            <tr>
+              <th scope="row" class="col-sm-3 table-active">商品合計</th>
+              <td><%= @sum %></td>
+            </tr>
+            <tr>
+              <th scope="row" class="col-sm-3 table-active">請求金額</th>
+              <td><%= @sum + 800 %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-2 pt-1">
+          <h5 class="font-weight-bold">支払法方</h5>
+        </div>
+        <div class="col-sm-3">
+          <%= @order.payment_method_i18n %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-2 pt-1">
+          <h5 class="font-weight-bold">お届け先</h5>
+        </div>
+        <div class="col-sm-3">
+          <%= @order.address %>
+          <%= @order.name %>
+        </div>
+      </div>
+      
