@@ -33,14 +33,16 @@
             <div class="col">
               <div class="item">
                 <p>
-                  <% if item.item_image.attached? %>
-                    <%= image_tag url_for(item.item_image), size: "150x100" %>
-                  <% else %>
-                    <%= image_tag 'noimage.png', size: "150x100" %>
+                  <%= link_to item_path(item.id) do %>
+                    <% if item.item_image.attached? %>
+                      <%= image_tag url_for(item.item_image), size: "150x100" %>
+                    <% else %>
+                      <%= image_tag 'noimage.png', size: "150x100" %>
+                    <% end %>
                   <% end %>
                 </p>  
                 <p><%= link_to item.name, item_path(item) %></p>
-                <p>¥<%= number_with_delimiter(item.price, delimiter: ',') %></p>
+                <p>¥<%= number_with_delimiter((item.price * 1.1).to_i) %></p>
               </div>
             </div>
           <% end %>
