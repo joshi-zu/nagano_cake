@@ -4,7 +4,7 @@
       <h4 class="my-5"><%= @customer.full_name %>さんの会員情報編集</h4>
       <table class="table table-borderless">
 
-        <%= form_with model: [:admin, @customer] do |f| %>
+        <%= form_with(model: [:admin, @customer], remote: true) do |f| %>
         <tr>
           <td>会員ID</td>
           <td><%= @customer.id %></td>
@@ -45,8 +45,7 @@
         <tr>
 
         <tr>
-          <td></td>
-          <td><%= f.submit "変更を保存", class:"btn btn-success", data: {"turbolinks" => false} %></td>
+          <td><%= f.submit "変更を保存", class:"btn btn-success" %></td>
         </tr>
         <% end %>
       
