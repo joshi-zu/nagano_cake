@@ -30,7 +30,7 @@
                   <% end %>
                 </p>
                 <p><%= link_to item.name, item_path(item) %></p>
-                <p>¥<%= number_with_delimiter(item.price, delimiter: ',') %></p>
+                <p>¥<%= number_with_delimiter((item.price * 1.1).to_i) %></p>
               </div>
             <% end %>
           </div>
