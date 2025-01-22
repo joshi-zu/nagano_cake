@@ -1,8 +1,12 @@
 <div class = "container">
   <div class = "row">
     <div class = "col">
-      <h3>ジャンル一覧・追加</h3>
-
+      <span class = "title bg-light" style="font-size: 2rem;">ジャンル一覧・追加</span>
+    </div>
+  </div>
+  <p class = ""><br></p>
+  <div class = "row">
+    <div class = "col-8">    
       <%= form_with(model: @genre, url: admin_genres_path) do |form| %>
             <div class = "form-groupe row">
               <label for"name", class="col-sm-2 col-form-label">ジャンル名</label>
@@ -14,32 +18,12 @@
               </div>
             </div>
       <% end %>
-
-      <table>
-        <thead>
-          <tr>
-            <th>ジャンル</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @genres.each do |genre| %>
-          <tr>
-            <td>
-              <span>
-                <%= genre.name %>
-              </span>
-            </td>
-            <td>
-              <%= link_to edit_admin_genre_path(genre.id) do %>
-                <button type="edit" class="btn btn-sm btn-success">編集する　</button>
-              <% end %>
-            </td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
-
+    </div>
+  </div>
+  <br>
+  <div class = "row">
+    <div class = "col-4">
+      <%= render 'table', genres: @genres %>
     </div>
   </div>
 </div>
-

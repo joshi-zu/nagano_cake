@@ -1,0 +1,29 @@
+<table class='table'>
+  <thead>
+    <tr>
+      <th>ジャンル</th>
+      <th colspan="5"></th>
+      <th></th>
+    <tr>
+  </thead>
+  <tbody>
+    <% genres.each do |genre| %>
+      <tr>
+        <td>
+          <span>
+            <%= genre.name %>
+          </span>
+        </td>
+        <td>
+        </td>
+        <td>
+          <span>
+            <%= link_to edit_admin_genre_path(genre.id) do %>
+              <button type="submit" class="btn btn-sm btn-success">編集する</button>
+            <% end %>
+          </span>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+</table>
