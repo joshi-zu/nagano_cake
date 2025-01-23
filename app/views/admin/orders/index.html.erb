@@ -22,7 +22,7 @@
             <td>
               <span>
                 <%= link_to admin_order_path(order.id) do %>
-                <%= order.created_at %>
+                <%= order.created_at.strftime('%Y-%m-%d %H:%M:%S') %>
                 <% end %>
               </span>
             </td>
@@ -33,7 +33,9 @@
             </td>
             <td>
               <span>
-                
+                <% order.order_details.each do |order_detail| %>
+                  <%= order_detail.amount %>
+                <% end %>
               </span>
             </td>
             <td>
