@@ -8,4 +8,18 @@ class Item < ApplicationRecord
     tax_rate = 0.1 # 例として消費税率を10%とします
     price * (1 + tax_rate)
   end
+
+  def self.looks(search, word)
+    if search == "perfect_match"
+      @item = Item.where("name LIKE?","#{word}")
+    elsif search == "forward_match"
+      @item = Item.where("name LIKE?","#{word}%")
+    elsif search == "backward_match"
+      @item = Item.where("name LIKE?","%#{word}")
+    elsif search == "partial_match"
+      @item = Item.where("name LIKE?","%#{word}%")
+    else
+      @item = Item.all
+    end
+  end
 end

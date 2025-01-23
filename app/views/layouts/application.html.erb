@@ -13,63 +13,80 @@
   <body class="d-flex flex-column vh-100">
     <header class="shadow-sm mb-4">
       <nav class="navbar navbar-expand-lg navbar-light">
-      <div class="container">
-        <a class="navbar-brand" href="/"><span><%= image_tag 'nagano_cupcake.jpg', size: "80x80" %></span></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav ml-auto">
-          <% if admin_signed_in?  %>
-            <li class="nav-item mr-5">
-              <%= link_to '商品一覧', admin_items_path, class: 'btn btn-outline-dark' %>
-            </li>
-            <li class="nav-item mr-5">
-              <%= link_to '会員一覧', admin_customers_path, class: 'btn btn-outline-dark' %>
-            </li>
-            <li class="nav-item mr-5">
-              <%= link_to '注文履歴一覧', admin_orders_path, class: 'btn btn-outline-dark' %>
-            </li>
-            <li class="nav-item mr-5">
-              <%= link_to 'ジャンル一覧', admin_genres_path, class: 'btn btn-outline-dark' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to 'ログアウト', destroy_admin_session_path, class: 'btn btn-outline-dark', method: :delete %>
-            </li>
+        <div class="container">
+          <div class = "row">
+            <div class="col-2">
+              <a class="navbar-brand" href="/"><span><%= image_tag 'nagano_cupcake.jpg', size: "80x80" %></span></a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+            </div>
+            <div class="col-4">
+              <div>
+                ようこそ、<%= current_customer.last_name %>さん!
+              </div>
+            </div>
+            <div class="col-6">
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul class="navbar-nav">
+              <% if admin_signed_in?  %>
+                <li class="nav-item mr-5">
+                  <%= link_to '商品一覧', admin_items_path, class: 'btn btn-outline-dark' %>
+                </li>
+                <li class="nav-item mr-5">
+                  <%= link_to '会員一覧', admin_customers_path, class: 'btn btn-outline-dark' %>
+                </li>
+                <li class="nav-item mr-5">
+                  <%= link_to '注文履歴一覧', admin_orders_path, class: 'btn btn-outline-dark' %>
+                </li>
+                <li class="nav-item mr-5">
+                  <%= link_to 'ジャンル一覧', admin_genres_path, class: 'btn btn-outline-dark' %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to 'ログアウト', destroy_admin_session_path, class: 'btn btn-outline-dark', method: :delete %>
+                </li>
+                
+              <% elsif customer_signed_in? %>
+                <li class="nav-item mr-5">
+                  <%= link_to 'マイページ', customer_path(current_customer), class: 'btn btn-outline-dark' %>
+                </li>
+                <li class="nav-item mr-5">
+                  <%= link_to '商品一覧', items_path, class: 'btn btn-outline-dark' %>
+                </li>
+                <li class="nav-item mr-5">
+                  <%= link_to 'カート', cart_items_path, class: 'btn btn-outline-dark' %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to 'ログアウト', destroy_customer_session_path, class: 'btn btn-outline-dark', method: :delete %>
+                </li>
 
-          <% elsif customer_signed_in? %>
-            <li class="nav-item mr-5">
-              <%= link_to 'マイページ', customer_path(current_customer), class: 'btn btn-outline-dark' %>
-            </li>
-            <li class="nav-item mr-5">
-              <%= link_to '商品一覧', items_path, class: 'btn btn-outline-dark' %>
-            </li>
-            <li class="nav-item mr-5">
-              <%= link_to 'カート', cart_items_path, class: 'btn btn-outline-dark' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to 'ログアウト', destroy_customer_session_path, class: 'btn btn-outline-dark', method: :delete %>
-            </li>
-
-          <% else %>
-            <li class="nav-item mr-5">
-              <%= link_to 'About', about_path, class: 'btn btn-outline-dark' %>
-            </li>
-            <li class="nav-item mr-5">
-              <%= link_to '商品一覧', items_path, class: 'btn btn-outline-dark' %>
-            </li>
-            <li class="nav-item mr-5">
-              <%= link_to '新規登録', new_customer_registration_path, class: 'btn btn-outline-dark' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to 'ログイン', new_customer_session_path, class: 'btn btn-outline-dark' %>
-            </li>
-
-          <% end %>
-
-        </ul>
+              <% else %>
+                <li class="nav-item mr-5">
+                  <%= link_to 'About', about_path, class: 'btn btn-outline-dark' %>
+                </li>
+                <li class="nav-item mr-5">
+                  <%= link_to '商品一覧', items_path, class: 'btn btn-outline-dark' %>
+                </li>
+                <li class="nav-item mr-5">
+                  <%= link_to '新規登録', new_customer_registration_path, class: 'btn btn-outline-dark' %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to 'ログイン', new_customer_session_path, class: 'btn btn-outline-dark' %>
+                </li>
+              <% end %>
+              </ul>
+            </div>
+            <div class = "row">
+            <div class="search_form ml-auto">
+              <%= form_with url: search_path, local: true, method: :get, class: "d-flex" do |f| %>
+                <%= f.text_field :word %>
+                <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"],  ["後方一致","backward_match"], ["部分一致","partial_match"]]) %>
+                <%= f.submit "検索", class: "btn btn-primary" %>
+              <% end %>
+            </div>
+            </div>
+          </div>
         </div>
-      </div>
       </nav>
     </header>
 
@@ -79,6 +96,10 @@
       <div class="d-flex justify-content-center mb-2" >
       </div>
 
+      <div>
+      <%= flash[:notice] %>
+      </div>
+      
       <%= yield %>
     </main>
 
