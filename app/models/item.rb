@@ -6,7 +6,7 @@ class Item < ApplicationRecord
 
   def with_tax_price
     tax_rate = 0.1 # 例として消費税率を10%とします
-    price * (1 + tax_rate)
+    price * (1 + tax_rate).round
   end
 
   def self.looks(search, word)
