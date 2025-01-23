@@ -45,7 +45,7 @@
                 <li class="nav-item">
                   <%= link_to 'ログアウト', destroy_admin_session_path, class: 'btn btn-outline-dark', method: :delete %>
                 </li>
-
+                
               <% elsif customer_signed_in? %>
                 <li class="nav-item mr-5">
                   <%= link_to 'マイページ', customer_path(current_customer), class: 'btn btn-outline-dark' %>
