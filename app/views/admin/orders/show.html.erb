@@ -1,0 +1,23 @@
+<div class = "container">
+  <div class = "row">
+    <div class = "col">
+    <span class = "bg-light" style="font-size: 2rem;">注文履歴詳細</span>
+    </div>
+  </div>
+
+  <div class = "row">
+    <div class = "col">
+    </div>
+  </div>
+
+  <div class = "row">
+    <div class = "col-8">
+      #<<%= render 'order_details/items', item: @item, form_url: admin_order_detail_path, submit_text: '新規登録' %>>
+    </div>
+
+    <div class = "col-3">
+      #<%= render 'order_details/price', genres: @genres %>
+    </div>
+  </div>
+
+</div>
