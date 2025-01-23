@@ -1,4 +1,6 @@
 class CartItemsController < ApplicationController
+  before_action :check_login, only: [:create]
+
   def index
     @cart_item = CartItem.all
   end
@@ -13,8 +15,8 @@ class CartItemsController < ApplicationController
       cart_item.update(amount: cart_item.amount)
       redirect_to cart_items_path
     else
-      cart_item.save
-      redirect_to cart_items_path
+
+      redirect_to new_customer_session_path
     end
   end
 
@@ -40,5 +42,10 @@ class CartItemsController < ApplicationController
     params.require(:cart_item).permit(:item_id, :amount)
   end
 
+  def check_login
+    unless current_customer
+      redirect_to new_customer_session_path
+    end
+  end
 
 end
