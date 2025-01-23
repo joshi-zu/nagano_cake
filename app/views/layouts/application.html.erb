@@ -21,12 +21,12 @@
                 <span class="navbar-toggler-icon"></span>
               </button>
             </div>
-            <div class="col-4">
+            <div class="col-3">
               <% if customer_signed_in? %>
                 <p>ようこそ、<%= current_customer.last_name %>さん！</p>
               <% end %>
             </div>
-            <div class="col-6">
+            <div class="col-7">
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
               <ul class="navbar-nav">
               <% if admin_signed_in?  %>
