@@ -8,16 +8,14 @@ class CartItemsController < ApplicationController
   def create
     cart_item = CartItem.new(cart_item_params)
     cart_item.customer_id = current_customer.id
-    cart_item.item_id = cart_item_params[:item_id]
     if CartItem.find_by(item_id: params[:cart_item][:item_id]).present?
       cart_item = CartItem.find_by(item_id: params[:cart_item][:item_id])
       cart_item.amount += params[:cart_item][:amount].to_i
       cart_item.update(amount: cart_item.amount)
-      redirect_to cart_items_path
     else
-
-      redirect_to new_customer_session_path
+      cart_item.save
     end
+    redirect_to cart_items_path
   end
 
   def update
