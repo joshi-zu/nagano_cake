@@ -9,23 +9,29 @@
       <%= form_with model: @address do |f| %>
 
         <div class="form-group row">
-          <label for="postal_code" class="col-sm-3 col-form-label">郵便番号(ハイフンなし)</label>
-          <div class="col-sm-4">
-            <input type="text" class="form-control" id="postal_code" name="address[postal_code]" placeholder="0000000">
+          <div class="col-sm-3 mr-1">
+            <%= f.label :postal_code, "郵便番号" %>
+          </div>
+          <div class="col-sm-3">
+            <%= f.text_field :postal_code, class: "form-control", placeholder: "0000000" %>
           </div>
         </div>
 
         <div class="form-group row">
-          <label for="address" class="col-sm-3 col-form-label">住所</label>
+          <div class="col-sm-3 mr-1">
+            <%= f.label :address, "住所" %>
+          </div>
           <div class="col-sm-7">
-            <input type="text" class="form-control" id="address" name="address[address]" placeholder="東京都渋谷区代々木神園町0-0">
+            <%= f.text_field :address, class: "form-control", placeholder: "東京都渋谷区代々木神園町0-0" %>
           </div>
         </div>
 
-        <div class="form-group row mb-5">
-          <label for="name" class="col-sm-3 col-form-label">宛名</label>
-          <div class="col-sm-4">
-            <input type="text" class="form-control" id="name" name="address[name]" placeholder="令和道子">
+        <div class="form-group row">
+          <div class="col-sm-3 mr-1">
+            <%= f.label :name, "宛名" %>
+          </div>
+          <div class="col-sm-3">
+            <%= f.text_field :name, class: "form-control", placeholder: "令和道子" %>
           </div>
           <div class="ml-auto col-sm-3">
             <button type="submit" class="btn btn-success">新規登録</button>
@@ -33,7 +39,7 @@
         </div>
       <% end %>
 
-      <table class="table table-bordered col-sm-8">
+      <table class="table table-bordered col-sm-8 mt-4">
         <thead>
           <tr>
             <th class="table-active">郵便番号</th>
