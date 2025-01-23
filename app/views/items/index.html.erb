@@ -1,19 +1,17 @@
 <div class="container px-5 px-sm-0">
   <div class="row">
     <div class="col-md-3 space-above">
-      <table class="table">
-        <tr>
-          <th>ジャンル検索</th>
-        </tr>
-        <tr><td>ジャンル</td></tr>
-      </table>
+      <%= render 'genres', genres: @genres %>
     </div>
 
     <div class="col-md-8 offset-md-1">
       <div class="row">
-      <h1> 商品一覧 </h1>
-      <h4>(全<%= @items.count %>件)</h4>
+        <span class = "title bg-light", style="font-size: 2.5rem; display:flex; ">
+          <h1>商品一覧 </h1>
+          <h4 style = "margin: auto;">(全<%= @items.count %>件)</h4>
+        </span>
       </div>
+      <br>
       
       <div class="row">
         <% @items.each_slice(4) do |items_row| %>

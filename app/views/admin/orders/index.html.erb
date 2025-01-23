@@ -1,0 +1,50 @@
+<div class = "container">
+  <div class = "row">
+    <div class = "col">
+      <span class="bg-light" style="font-size: 2rem;">注文履歴一覧</span>
+    </div>
+  </div>
+  <br>
+  
+  <div class = "row">
+    <table class='table table-hover table-inverse'>
+      <thead>
+        <tr>
+          <th>購入日時</th>
+          <th>購入者</th>
+          <th>注文個数</th>
+          <th>注文ステータス</th>
+        <tr>
+      </thead>
+      <tbody>
+        <% @orders.each do |order| %>
+          <tr>
+            <td>
+              <span>
+                <%= link_to admin_order_path(order.id) do %>
+                <%= order.created_at %>
+                <% end %>
+              </span>
+            </td>
+            <td>
+              <span>
+                <%= order.customer.name %>
+              </span>
+            </td>
+            <td>
+              <span>
+                <%= order.order_details.amount %>
+              </span>
+            </td>
+            <td>
+              <span>
+                <%= order.status %>
+              </span>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    </dv>
+  </div>
+</div>
