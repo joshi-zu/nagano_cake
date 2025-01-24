@@ -43,11 +43,11 @@
             </tr>
             <tr>
               <th scope="row" class="col-sm-3 table-active">商品合計</th>
-              <td><%= @cart_items_price %></td>
+              <td><%= number_with_delimiter((@cart_items_price), delimiter: ',') %></td>
             </tr>
             <tr>
               <th scope="row" class="col-sm-3 table-active">請求金額</th>
-              <td><%= @total_price %></td>
+              <td><%= number_with_delimiter((@total_price), delimiter: ',') %></td>
             </tr>
           </tbody>
         </table>
