@@ -22,23 +22,27 @@
             <td>
               <span>
                 <%= link_to admin_order_path(order.id) do %>
-                <%= order.created_at %>
+                <%= order.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
                 <% end %>
               </span>
             </td>
             <td>
               <span>
-                <%= order.name %>
+                <%= order.customer.last_name %><%= order.customer.first_name %>
               </span>
             </td>
             <td>
               <span>
-                
-              </span>
+                <% @amount_total = 0 %>
+                <% order.order_details.each do |order_detail| %>
+                  <% @amount_total = @amount_total + order_detail.amount %>
+                <% end %>
+                <%= @amount_total %>
+                </span>
             </td>
             <td>
               <span>
-                <%= order.order_status %>
+                <%= order.order_status_i18n %>
               </span>
             </td>
           </tr>
