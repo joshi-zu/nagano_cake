@@ -11,7 +11,7 @@ class OrdersController < ApplicationController
 
     ary = []
     @cart_items.each do |cart_item|
-      ary << cart_item.item.with_tax_price*cart_item.amount
+      ary << cart_item.item.add_tax_price*cart_item.amount
     end
     @cart_items_price = ary.sum
 
@@ -19,7 +19,7 @@ class OrdersController < ApplicationController
     @select_address = params[:order][:select_address]
     case @select_address
     when "customer_address"
-      @selected_address = current_customer.postal_code + " " + current_customer.address + " " + current_customer.last_name + current_customer.first_name
+      @selected_address = "〒" + current_customer.postal_code + " " + current_customer.address + " " + current_customer.last_name + current_customer.first_name
     when "registered_address"
       unless params[:order][:address_id] == ""
         selected = Address.find(params[:order][:address_id])
@@ -43,7 +43,7 @@ class OrdersController < ApplicationController
     @cart_items = CartItem.where(customer_id: current_customer.id)
     ary = []
     @cart_items.each do |cart_item|
-      ary << cart_item.item.with_tax_price*cart_item.amount
+      ary << cart_item.item.add_tax_price*cart_item.amount
     end
     @cart_items_price = ary.sum
     @order.total_payment = @order.shipping_cost + @cart_items_price
