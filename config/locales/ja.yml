@@ -16,3 +16,16 @@ ja:
         wait_making: '制作待ち'
         making: '制作中'
         finish: '制作完了'
+  activerecord:
+    attributes:
+      customer:
+        last_name: '姓'
+        first_name: '名'
+        last_name_kana: 'セイ'
+        first_name_kana: 'メイ'
+        postal_code: '郵便番号'
+        address: '住所'
+        phone_number: '電話番号'
+        email: 'メールアドレス'
+        password: 'パスワード'
+        
