@@ -61,8 +61,8 @@ class OrdersController < ApplicationController
       @order.address = current_customer.address
       @order.name = current_customer.last_name + current_customer.first_name
     when "registered_address"
-      Address.find(params[:order][:registered_address_id])
-      selected = Address.find(params[:order][:registered_address_id])
+      Address.find(params[:order][:address_id])
+      selected = Address.find(params[:order][:address_id])
       @order.postal_code = selected.postal_code
       @order.address = selected.address
       @order.name = selected.name
