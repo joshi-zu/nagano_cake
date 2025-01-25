@@ -9,6 +9,10 @@ class Item < ApplicationRecord
     price * (1 + tax_rate).round
   end
 
+  def add_tax_price
+    (self.price * 1.10).round
+  end
+
   def self.looks(search, word)
     if search == "perfect_match"
       @item = Item.where("name LIKE?","#{word}")
