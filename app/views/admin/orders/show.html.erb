@@ -4,20 +4,96 @@
     <span class = "bg-light" style="font-size: 2rem;">注文履歴詳細</span>
     </div>
   </div>
+  <br>
 
-  <div class = "row">
-    <div class = "col">
-    </div>
+  <div class = "row info">
+    <%= render 'information', order: @order %>
   </div>
 
-  <div class = "row">
-    <div class = "col-8">
-      #<<%= render 'order_details/items', item: @item, form_url: admin_order_detail_path, submit_text: '新規登録' %>>
+  <div class = "row info">
+    <br>
+  </div>
+
+  <div class = "row item">
+    <div class = "col-6">
+      
+      <table >
+        <thead>
+          <tr class="table-active">
+            <th>商品名</th>
+            <th>単価（税込）</th>
+            <th>数量</th>
+            <th>小計</th>
+            <th>製作ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @orders.each do |order| %>
+            <tr>
+              <td>
+                <span>
+                  <% order.order_details.each do |order_detail| %>
+                    <%= order_detail.item.name %>
+                  <% end %>
+                </span>
+              </td>
+              <td>
+                <span>
+                  <%= number_with_delimiter((order.total_payment * 1.1).round, delimiter: ',')%>
+                </span>
+              </td>
+              <td>
+                <span>
+                <% @amount_total = 0 %>
+                <% order.order_details.each do |order_detail| %>
+                  <% @amount_total = @amount_total + order_detail.amount %>
+                <% end %>
+                <%= @amount_total %>
+                </span>
+              </td>
+              <td>
+                <span><%= number_with_delimiter((order.total_payment * 1.1).round, delimiter: ',') %></span>
+              </td>
+              <td>
+                <span>
+                  
+                </span>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
     </div>
 
     <div class = "col-3">
-      #<%= render 'order_details/price', genres: @genres %>
     </div>
+
+    <div class = "col-2">
+      <table>
+        <tbody>
+          <tr>
+            <th>商品合計</th>
+            <td>
+              <span><%= @cart_items_price  %></span>
+            </td>
+          </tr>
+          <tr>
+            <th>送料</th>
+            <td>
+              <span><%= @shipping_cost %></span>
+            </td>
+          </tr>
+          <tr>
+            <th>請求金額合計</th>
+            <td>
+              <span><%= @total_price %></span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
   </div>
 
 </div>
