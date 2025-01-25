@@ -93,11 +93,15 @@ class OrdersController < ApplicationController
   end
 
   def index
-    @order = Order.all
+    @orders = Order.all
+    @cart_items = CartItem.where(customer_id: current_customer.id)
+    @shipping_cost = 800
   end
 
   def show
     @order = Order.find(params[:id])
+    @orders = Order.all
+    @shipping_cost = 800
   end
 
   private
