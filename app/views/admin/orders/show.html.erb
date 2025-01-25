@@ -15,11 +15,11 @@
   </div>
 
   <div class = "row item">
-    <div class = "col-8">
+    <div class = "col-6">
       
       <table >
         <thead>
-          <tr class="table-second">
+          <tr class="table-active">
             <th>商品名</th>
             <th>単価（税込）</th>
             <th>数量</th>
@@ -33,25 +33,21 @@
               <td>
                 <span><%= cart_item.item.name %></span>
               </td>
-            </tr>
-            <tr>
               <td>
-                <span><%= cart_item.item.price %></span>
+                <span>
+                  <%= number_with_delimiter((cart_item.item.price * 1.1).round, delimiter: ',')%>
+                </span>
               </td>
-            </tr>
-            <tr>
               <td>
                 <span><%= cart_item.amount %></span>
               </td>
-            </tr>
-            <tr>
               <td>
-                <span><%= cart_item.item.price %>*<%= cart_item.amount %></span>
+                <span><%= number_with_delimiter((cart_item.subtotal * 1.1).round, delimiter: ',') %></span>
               </td>
-            </tr>
-            <tr>
               <td>
-                <span></span>
+                <span>
+                  
+                </span>
               </td>
             </tr>
           <% end %>
@@ -61,23 +57,27 @@
     </div>
 
     <div class = "col-3">
+    </div>
+
+    <div class = "col-2">
       <table>
         <tbody>
           <tr>
             <th>商品合計</th>
             <td>
-              <span><%  %><span>
+              <span><%= @cart_items_price  %></span>
             </td>
           </tr>
           <tr>
             <th>送料</th>
             <td>
+              <span><%= @shipping_cost %></span>
             </td>
           </tr>
           <tr>
             <th>請求金額合計</th>
             <td>
-              
+              <span><%= @total_price %></span>
             </td>
           </tr>
         </tbody>
