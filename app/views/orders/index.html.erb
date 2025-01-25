@@ -1,4 +1,4 @@
-<table class="table table-bordered mx-auto" style="max-width: 1300px;">
+<table class="table table-bordered mx-auto" style="max-width: 1100px;">
    <div class="row mx-auto" style="max-width: 1000px;">
       <span class="bg-light" style="font-size: 1.5rem;">注文詳細一覧</span>
    </div>
@@ -10,14 +10,21 @@
       <th>ステータス</th>
       <th>注文詳細</th>
    </tr>
-   <% @order.each do |order| %>
+   <% @orders.each do |order| %>
       <tr>
-         <td><%= order.created_at %></td>
+         <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
          <td><%= order.address %></td>
-         <td><%= order.item.name %></td>
-         <td>金額</td>
-         <td><%= order.status %></td>
-         <td><%= link_to "表示する", order_path, class: "btn btn-primary" %></td>
+         <td colspan=>
+            <% order.order_details.each do |order_detail| %>
+               <%= "#{order_detail.item.name}" %><br>
+            <% end %>
+         </td>
+         <td><%= order.order_details.total_payment %></td>
+         <td rowspan="<%= order.order_details.size %>">ステータス</td>
+         <td rowspan="<%= order.order_details.size %>">
+            <%= link_to "表示する", order_path(order.id), class: "btn btn-primary" %>
+         </td>
       </tr>
    <% end %>
+   
 </table>

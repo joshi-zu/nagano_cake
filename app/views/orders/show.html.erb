@@ -6,7 +6,7 @@
       <table class="table">
         <tr>
           <td>注文日</td>
-          <td><%= @order.created_at %></td>
+          <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
         </tr>
         <tr>
           <td>配送先</td>
@@ -18,7 +18,7 @@
         </tr>
         <tr>
           <td>ステータス</td>
-          <td><%= order.status %></td>
+          <td>ステータス</td>
         </tr>
       </table>
     </div>
@@ -28,7 +28,7 @@
       <table class="table">
         <tr>
           <td>商品合計</td>
-          <td><商品合計/td>
+          <td>商品合計</td>
         </tr>
         <tr>
           <td>配送料</td>
@@ -52,15 +52,15 @@
         <th>個数</th>
         <th>小計</th>
       </tr>
-      <% @order.each do |order| %>←書き換える
+
+      <% @order.order_details.each do |order_detail| %>
         <tr>
-           <td><%= order.item.name %></td>
-           <td>金額</td>
-           <td><%= order.order_detail.amount %></td>
-           <td><%= order.status %></td>
-           <td>小計(単価x個数)</td>
+          <td><%= order_detail.item.name %></td>
+          <td><%= order_detail.price %></td>
+          <td><%= order_detail.amount %></td>
+          <td><%= order_detail.price * order_detail.amount %></td>
         </tr>
-      <% end %>
+        <% end %>
       </table>
     </div>
   </div>
