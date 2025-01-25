@@ -33,14 +33,16 @@
             </td>
             <td>
               <span>
+                <% @amount_total = 0 %>
                 <% order.order_details.each do |order_detail| %>
-                  <%= order_detail.amount %>
+                  <% @amount_total = @amount_total + order_detail.amount %>
                 <% end %>
-              </span>
+                <%= @amount_total %>
+                </span>
             </td>
             <td>
               <span>
-                <%= order.order_status %>
+                <%= order.order_status_i18n %>
               </span>
             </td>
           </tr>

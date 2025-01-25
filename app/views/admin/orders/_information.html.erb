@@ -14,7 +14,7 @@
           </td>
       </tr>
       <tr>
-        <th scope="row" class="col-sm-3" >配送先</th>
+        <th scope="row" class="col-sm-3">配送先</th>
         <td>
           <span>
             〒<%= order.postal_code %> <%= order.address %>
@@ -28,13 +28,13 @@
       <tr>
         <th scope="row" class="col-sm-3" >支払方法</th>
         <td>
-          <span><%= order.payment_method %></span>
+          <span><%= order.payment_method_i18n %></span>
         </td>
       </tr>
       <tr>
         <th scope="row" class="col-sm-3" >注文ステータス</th>
         <td>
-          <span><%= order.order_status %></span>
+          <span><%= order.order_status_i18n %></span>
         </td>
       </tr>
     </tbody>
