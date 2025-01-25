@@ -28,38 +28,16 @@
           </tr>
         </thead>
         <tbody>
-          <% @orders.each do |order| %>
-            <tr>
-              <td>
-                <span>
-                  <% order.order_details.each do |order_detail| %>
-                    <%= order_detail.item.name %>
-                  <% end %>
-                </span>
-              </td>
-              <td>
-                <span>
-                  <%= number_with_delimiter((order.total_payment * 1.1).round, delimiter: ',')%>
-                </span>
-              </td>
-              <td>
-                <span>
-                <% @amount_total = 0 %>
-                <% order.order_details.each do |order_detail| %>
-                  <% @amount_total = @amount_total + order_detail.amount %>
-                <% end %>
-                <%= @amount_total %>
-                </span>
-              </td>
-              <td>
-                <span><%= number_with_delimiter((order.total_payment * 1.1).round, delimiter: ',') %></span>
-              </td>
-              <td>
-                <span>
-                  
-                </span>
-              </td>
-            </tr>
+        <% @order.order_details.each do |order_detail| %>
+          <tr>
+            <td><%= order_detail.item.name %></td>
+            <td><%= order_detail.price %></td>
+            <td><%= order_detail.amount %></td>
+            <td><%= order_detail.price * order_detail.amount %></td>
+            <td>
+              <%=  %>
+            </td>
+          </tr>
           <% end %>
         </tbody>
       </table>
