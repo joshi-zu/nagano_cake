@@ -25,7 +25,7 @@
             〒<%= current_customer.postal_code + " " + current_customer.address + " " + current_customer.last_name  + current_customer.first_name %>
           </div>
 
-          <%= f.radio_button :select_address, [:registered_address] %>
+          <%= f.radio_button :select_address, "registered_address" %>
           <%= f.label :select_addres, "登録済住所から選択" %>
           <div class="ml-4 mb-4">
             <%= f.select :address_id, options_from_collection_for_select(@addresses, :id, :full_address), { include_blank: '選択してください'}, { class: 'form-control'} %>

@@ -55,7 +55,7 @@
 
       <div class="row mt-4">
         <div class="col-sm-2 pt-1">
-          <h5 class="font-weight-bold">支払法方</h5>
+          <h5 class="font-weight-bold">支払方法</h5>
         </div>
         <div class="col-sm-3">
           <% if @selected_payment_method == "credit_card" %>
@@ -79,7 +79,7 @@
         <%= hidden_field_tag 'order[select_address]', @select_address %>
 
         <% if @select_address == "registered_address" %>
-          <%= hidden_field_tag 'order[registered_address_id]', params[:order][:registered_address_id] %>
+          <%= hidden_field_tag 'order[address_id]', params[:order][:address_id] %>
         <% elsif @select_address == "new_address" %>
           <%= hidden_field_tag 'order[new_postal_code]', params[:order][:new_postal_code] %>
           <%= hidden_field_tag 'order[new_address]', params[:order][:new_address] %>
