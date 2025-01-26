@@ -28,7 +28,7 @@
           <%= f.radio_button :select_address, "registered_address" %>
           <%= f.label :select_addres, "登録済住所から選択" %>
           <div class="ml-4 mb-4">
-            <%= f.select :address_id, options_from_collection_for_select(@addresses, :id, :full_address), { include_blank: '選択してください'}, { class: 'form-control'} %>
+            <%= f.collection_select :address_id, @addresses, :id, :full_address, {prompt: "選択してください"}, class: "form-control" %>
           </div>
 
           <%= f.radio_button :select_address, "new_address" %>

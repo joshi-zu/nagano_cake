@@ -1,7 +1,9 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_customer!
+
   def new
     @order = Order.new
-    @addresses = Address.all
+    @addresses = Address.where(customer_id:[current_customer.id])
   end
 
   def confirm
@@ -23,15 +25,26 @@ class OrdersController < ApplicationController
     when "registered_address"
       unless params[:order][:address_id] == ""
         selected = Address.find(params[:order][:address_id])
-        @selected_address = selected.postal_code + " " + selected.address + " " + selected.name
+        @selected_address = "〒" + selected.postal_code + " " + selected.address + " " + selected.name
       else
-        render :new
+        flash[:notice] = "配送先を選択してください"
+        redirect_to new_order_path
       end
     when "new_address"
-      unless params[:order][:new_postal_code] == "" && params[:order][:new_address] == "" && params[:order][:new_name] == ""
-        @selected_address = params[:order][:new_postal_code] + " " + params[:order][:new_address] + " " + params[:order][:new_name]
+      if params[:order][:new_postal_code] == "" && params[:order][:new_address] == "" && params[:order][:new_name] == ""
+        flash[:notice] = "配送先情報をすべて入力してください"
+        redirect_to new_order_path
+      elsif params[:order][:new_postal_code] == ""
+        flash[:notice] = "郵便番号が入力されていません"
+        redirect_to new_order_path
+      elsif params[:order][:new_address] == ""
+        flash[:notice] = "住所が入力されていません"
+        redirect_to new_order_path
+      elsif params[:order][:new_name] == ""
+        flash[:notice] = "宛名が入力されていません"
+        redirect_to new_order_path
       else
-        render :new
+        @selected_address = "〒" + params[:order][:new_postal_code] + " " + params[:order][:new_address] + " " + params[:order][:new_name]
       end
     end   
   end
