@@ -1,11 +1,22 @@
-<h2>検索結果</h2>
-
-<table class="table table-hover table-inverse">
+<table class="table  mx-auto"style="max-width: 1100px;">
+  <div class="row mx-auto" style="max-width: 1000px;">
+    <span class="bg-light" style="font-size: 1.5rem;">検索結果</span>
+  </div>
   <tbody>
     <% @items.each do |item| %>
       <tr>
-        <td><%= item.name %></td>
+        <td>
+          <%= link_to item_path(item.id) do %>
+            <% if item.item_image.attached? %>
+              <%= image_tag url_for(item.item_image), size: "150x100" %>
+            <% else %>
+              <%= image_tag 'noimage.png', size: "150x100" %>
+            <% end %>
+          <% end %>
+        </td>
+        <td><%= link_to item.name, item_path(item) %></td>
         <td><%= item.introduction %></td>
+        <td>¥<%= number_with_delimiter((item.price * 1.1).to_i) %></td>
       </tr>
     <% end %>
   </tbody>
