@@ -9,8 +9,12 @@ class AddressesController < ApplicationController
   def create
     @address = Address.new(address_params)
     @address.customer_id = current_customer.id
-    @address.save
-    redirect_to addresses_path
+    if @address.save
+      redirect_to addresses_path
+    else
+      flash[:notice] = "すべての項目を入力してください"
+      redirect_to addresses_path
+    end
   end
 
   def edit
