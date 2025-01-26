@@ -2,7 +2,8 @@ class CartItemsController < ApplicationController
   before_action :check_login, only: [:create]
 
   def index
-    @cart_item = CartItem.all
+    @cart_items = current_customer.cart_items.all
+    @total_price = 0
   end
 
   def create

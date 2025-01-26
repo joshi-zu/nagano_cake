@@ -20,7 +20,7 @@
         </tr>
         <tr>
           <td>ステータス</td>
-          <td>ステータス</td>
+          <td><%= @order.order_status_i18n %></td>
         </tr>
       </table>
     </div>
@@ -30,7 +30,7 @@
       <table class="table">
         <tr>
           <td>商品合計</td>
-          <td><%= number_with_delimiter((@order.total_payment).round, delimiter: ',') %></td>
+          <td><%= number_with_delimiter((@order.total_payment * 1.1).round, delimiter: ',') %></td>
         </tr>
         <tr>
           <td>配送料</td>
@@ -38,7 +38,7 @@
         </tr>
         <tr>
           <td>ご請求額</td>
-          <td><%= number_with_delimiter((@order.total_payment + @shipping_cost).round, delimiter: ',') %></td>
+          <td><%= number_with_delimiter((@order.total_payment * 1.1 + @shipping_cost).round, delimiter: ',') %></td>
         </tr>
       </table>
     </div>
@@ -58,9 +58,9 @@
       <% @order.order_details.each do |order_detail| %>
         <tr>
           <td><%= order_detail.item.name %></td>
-          <td><%= order_detail.price %></td>
+          <td><%= (order_detail.price * 1.1).round %></td>
           <td><%= order_detail.amount %></td>
-          <td><%= order_detail.price * order_detail.amount %></td>
+          <td><%= (order_detail.price * 1.1).round * order_detail.amount %></td>
         </tr>
         <% end %>
       </table>
