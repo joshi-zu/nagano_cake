@@ -35,7 +35,18 @@
             <td><%= order_detail.amount %></td>
             <td><%= order_detail.price * order_detail.amount %></td>
             <td>
-              <%=  %>
+              <%= form_with(model: @order_detail, url: admin_order_detail_path) do |f| %>
+                <div class = "form-groupe row">
+                  <div class="col-sm-4">
+                    <%= f.collection_select :production_status, [["制作不可", "0"],["制作待ち", "1"],["製作中", "2"],["制作完了", "3"]], :last, :first %>
+                  </div>
+                  <div class="col-sm-2">
+                  </div>
+                  <div class="col-sm-2">
+                    <%= f.submit '変更を保存', class: "btn btn-sm btn-success" %>
+                  </div>
+                </div>
+              <% end %>
             </td>
           </tr>
           <% end %>
@@ -47,29 +58,8 @@
     <div class = "col-3">
     </div>
 
-    <div class = "col-2">
-      <table>
-        <tbody>
-          <tr>
-            <th>商品合計</th>
-            <td>
-              <span><%= @cart_items_price  %></span>
-            </td>
-          </tr>
-          <tr>
-            <th>送料</th>
-            <td>
-              <span><%= @shipping_cost %></span>
-            </td>
-          </tr>
-          <tr>
-            <th>請求金額合計</th>
-            <td>
-              <span><%= @total_price %></span>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+    <div class = "col-3">
+      <%= render 'price', order: @order, shipping_cost: @shipping_cost %>
     </div>
     
   </div>

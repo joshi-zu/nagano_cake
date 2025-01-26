@@ -34,7 +34,18 @@
       <tr>
         <th scope="row" class="col-sm-3" >注文ステータス</th>
         <td>
-          <span><%= order.order_status_i18n %></span>
+          <span>
+            <%= form_with(model: order, url: admin_order_detail_path) do |f| %>
+              <div class = "form-groupe row">
+                <div class="col-sm-4">
+                  <%= f.collection_select :order_status, [["入金待ち", "0"],["入金確認", "1"],["製作中", "2"],["発送中", "3"],["発送済み", "4"]], :last, :first %>
+                </div>
+                <div class="col-sm-1">
+                  <%= f.submit '　変更を保存　', class: "btn btn-sm btn-success" %>
+                </div>
+              </div>
+            <% end %>
+          </span>
         </td>
       </tr>
     </tbody>
