@@ -1,21 +1,21 @@
 header.custom {
-  background-color: pink !important; /* 背景色をピンクに指定 */
+  background-color: pink !important;
   color: white;
 }
 
 .btn-custom {
-  background-color: pink; /* ピンク色を指定 */
-  color: white; /* テキストの色を白に指定 */
+  background-color: pink;
+  color: white;
   border-color: white;
   position: relative;
 }
 
 .btn-custom:hover {
-  background-color: white; /* ホバー時の背景色を指定 */
-  color: pink; /* ホバー時のテキスト色を指定 */
+  background-color: white;
+  color: pink;
 }
 
 footer.custom {
-  background-color: pink !important; /* 背景色をピンクに指定 */
-  color: white; /* テキストの色を白に指定 */
+  background-color: pink !important;
+  color: white;
 }
