@@ -1,5 +1,6 @@
 class CartItemsController < ApplicationController
   before_action :check_login, only: [:create]
+  before_action :authenticate_customer!
 
   def index
     @cart_items = current_customer.cart_items.all
