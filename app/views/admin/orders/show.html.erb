@@ -35,10 +35,10 @@
             <td><%= order_detail.amount %></td>
             <td><%= order_detail.price * order_detail.amount %></td>
             <td>
-              <%= form_with(model: @order_detail, url: admin_order_detail_path) do |f| %>
+              <%= form_with(model: order_detail, url: admin_order_detail_path(order_detail.id)) do |f| %>
                 <div class = "form-groupe row">
                   <div class="col-sm-4">
-                    <%= f.collection_select :production_status, [["制作不可", "0"],["制作待ち", "1"],["製作中", "2"],["制作完了", "3"]], :last, :first %>
+                    <%= f.collection_select :making_status, [["制作不可", "impossible_making"],["制作待ち", "wait_making"],["製作中", "making"],["制作完了", "finish"]], :last, :first %>
                   </div>
                   <div class="col-sm-2">
                   </div>
