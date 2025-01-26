@@ -47,9 +47,7 @@
   <div class="row">
     <div>
       注文内容
-      <table class="table">
-      <tr>
-        <th>商品</th>
+      </th>
         <th>単価(税込)</th>
         <th>個数</th>
         <th>小計</th>
@@ -60,7 +58,9 @@
           <td><%= order_detail.item.name %></td>
           <td><%= order_detail.price %></td>
           <td><%= order_detail.amount %></td>
-          <td><%= order_detail.price * order_detail.amount %></td>
+          <td><%=<table class="table">
+      <tr>
+        <th>商品 order_detail.price * order_detail.amount %></td>
         </tr>
         <% end %>
       </table>

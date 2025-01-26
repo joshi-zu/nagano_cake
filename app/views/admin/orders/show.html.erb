@@ -28,38 +28,27 @@
           </tr>
         </thead>
         <tbody>
-          <% @orders.each do |order| %>
-            <tr>
-              <td>
-                <span>
-                  <% order.order_details.each do |order_detail| %>
-                    <%= order_detail.item.name %>
-                  <% end %>
-                </span>
-              </td>
-              <td>
-                <span>
-                  <%= number_with_delimiter((order.total_payment * 1.1).round, delimiter: ',')%>
-                </span>
-              </td>
-              <td>
-                <span>
-                <% @amount_total = 0 %>
-                <% order.order_details.each do |order_detail| %>
-                  <% @amount_total = @amount_total + order_detail.amount %>
-                <% end %>
-                <%= @amount_total %>
-                </span>
-              </td>
-              <td>
-                <span><%= number_with_delimiter((order.total_payment * 1.1).round, delimiter: ',') %></span>
-              </td>
-              <td>
-                <span>
-                  
-                </span>
-              </td>
-            </tr>
+        <% @order.order_details.each do |order_detail| %>
+          <tr>
+            <td><%= order_detail.item.name %></td>
+            <td><%= order_detail.price %></td>
+            <td><%= order_detail.amount %></td>
+            <td><%= order_detail.price * order_detail.amount %></td>
+            <td>
+              <%= form_with(model: order_detail, url: admin_order_detail_path(order_detail.id)) do |f| %>
+                <div class = "form-groupe row">
+                  <div class="col-sm-4">
+                    <%= f.collection_select :making_status, [["制作不可", "impossible_making"],["制作待ち", "wait_making"],["製作中", "making"],["制作完了", "finish"]], :last, :first %>
+                  </div>
+                  <div class="col-sm-2">
+                  </div>
+                  <div class="col-sm-2">
+                    <%= f.submit '変更を保存', class: "btn btn-sm btn-success" %>
+                  </div>
+                </div>
+              <% end %>
+            </td>
+          </tr>
           <% end %>
         </tbody>
       </table>
@@ -69,29 +58,8 @@
     <div class = "col-3">
     </div>
 
-    <div class = "col-2">
-      <table>
-        <tbody>
-          <tr>
-            <th>商品合計</th>
-            <td>
-              <span><%= @cart_items_price  %></span>
-            </td>
-          </tr>
-          <tr>
-            <th>送料</th>
-            <td>
-              <span><%= @shipping_cost %></span>
-            </td>
-          </tr>
-          <tr>
-            <th>請求金額合計</th>
-            <td>
-              <span><%= @total_price %></span>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+    <div class = "col-3">
+      <%= render 'price', order: @order, shipping_cost: @shipping_cost %>
     </div>
     
   </div>
