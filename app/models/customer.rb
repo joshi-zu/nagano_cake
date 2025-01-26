@@ -20,10 +20,6 @@ class Customer < ApplicationRecord
     end
   end
 
-  def active_for_authentication?
-    super && (is_active == true)
-  end
-
   has_many :cart_items
   has_many :orders
 
