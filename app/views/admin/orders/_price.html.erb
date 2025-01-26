@@ -1,0 +1,30 @@
+<table>
+  <tbody>
+    <tr>
+      <br>
+    </tr>
+    <tr>
+      <br>
+    </tr>
+    <tr>
+      <th>商品合計　　</th>
+      <td style="text-align: righ">
+        <span>
+          <%= number_with_delimiter((order.total_payment).round, delimiter: ',') %>円
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <th>送料　　</th>
+      <td>
+        <span><%= shipping_cost %>円</span>
+      </td>
+    </tr>
+    <tr>
+      <th>請求金額合計　　</th>
+      <td>
+        <span><%= number_with_delimiter((order.total_payment + shipping_cost).round, delimiter: ',') %>円</span>
+      </td>
+    </tr>
+  </tbody>
+</table>
