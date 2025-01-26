@@ -4,6 +4,12 @@ class Item < ApplicationRecord
   belongs_to :genre
   has_many :cart_items
 
+  validates :genre_id, presence: false
+  validates :name, presence: true
+  validates :introduction, presence: false
+  validates :price, presence: true
+  validates :is_active, presence: true
+
   def with_tax_price
     tax_rate = 0.1 # 例として消費税率を10%とします
     price * (1 + tax_rate).round
