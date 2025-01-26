@@ -3,7 +3,8 @@ class CartItemsController < ApplicationController
   before_action :authenticate_customer!
 
   def index
-    @cart_item = CartItem.all
+    @cart_items = current_customer.cart_items.all
+    @total_price = 0
   end
 
   def create
