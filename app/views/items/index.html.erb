@@ -17,22 +17,23 @@
         <% @items.each_slice(4) do |items_row| %>
           <div class="row">
             <% items_row.each do |item| %>
-              <div class="col">
-                <p>
-                  <%= link_to item_path(item.id) do %>
-                    <% if item.item_image.attached? %>
-                      <%= image_tag url_for(item.item_image), size: "150x100" %>
-                    <% else %>
-                      <%= image_tag 'noimage.png', size: "150x100" %>
+              <% if item.is_active == true %>
+                <div class="col">
+                  <p>
+                    <%= link_to item_path(item.id) do %>
+                      <% if item.item_image.attached? %>
+                        <%= image_tag url_for(item.item_image), size: "150x100" %>
+                      <% else %>
+                        <%= image_tag 'noimage.png', size: "150x100" %>
+                      <% end %>
                     <% end %>
-                  <% end %>
-                </p>
-                <p><%= link_to item.name, item_path(item) %></p>
-                <p>¥<%= number_with_delimiter((item.price * 1.1).to_i) %></p>
-              </div>
+                  </p>
+                  <p><%= link_to item.name, item_path(item) %></p>
+                  <p>¥<%= number_with_delimiter((item.price * 1.1).to_i) %></p>
+                </div>
+              <% end %>
             <% end %>
           </div>
-      
         <% end %>
       </div>
 

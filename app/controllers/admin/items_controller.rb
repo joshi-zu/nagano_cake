@@ -8,8 +8,12 @@ class Admin::ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    @item.save
-    redirect_to admin_item_path(@item.id)
+    if @item.save
+      redirect_to admin_item_path(@item.id)
+    else
+      flash.now[:notice] = "登録に失敗しました。"
+      render :new
+    end
   end
 
   def index
@@ -27,8 +31,12 @@ class Admin::ItemsController < ApplicationController
 
   def update
     @item = Item.find(params[:id])
-    @item.update(item_params)
-    redirect_to admin_item_path(@item.id)
+    if @item.update(item_params)
+      redirect_to admin_item_path(@item.id)
+    else
+      flash.now[:notice] = "編集に失敗しました。"
+      render :edit
+    end
   end
 
   private
