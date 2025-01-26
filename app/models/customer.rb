@@ -22,10 +22,6 @@ class Customer < ApplicationRecord
     end
   end
 
-  has_many :cart_items
-<<<<<<< HEAD
-  has_many :orders
-
   validates :last_name, presence: true
   validates :first_name, presence: true
   validates :last_name_kana, presence: true
@@ -34,9 +30,9 @@ class Customer < ApplicationRecord
   validates :postal_code, presence: true
   validates :address, presence: true
   validates :phone_number, presence: true
-=======
+
+  has_many :cart_items
   has_many :addresses, dependent: :destroy
   has_many :orders
->>>>>>> develop
   
 end
