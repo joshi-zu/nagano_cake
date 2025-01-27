@@ -21,7 +21,7 @@
               <tr>
                 <td>
                   <% if cart_item.item.item_image.attached? %>
-                     <%= image_tag cart_item.item.item_image, size: "80x50" %>
+                     <%= image_tag cart_item.item.item_image, size: "160x100" %>
                   <% else %>
                      <%= image_tag 'noimage.png', size: "80x50" %>
                   <% end %>
@@ -92,6 +92,7 @@
         <div class="row justify-content-center mt-5">
           <button type="submit" class="btn btn-success">注文を確定する</button>
         </div>
+        <br>
       <% end %>
     </div>
   </div>

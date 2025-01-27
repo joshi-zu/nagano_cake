@@ -1,0 +1,14 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #6c6b6b;
+}
+
+.pagination {
+  font-size: 25px;
+}
+
+.pagination a {
+  text-decoration: none;
+}
