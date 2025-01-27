@@ -12,6 +12,10 @@ h3 {
   font-family: "游ゴシック","ヒラギノ角ゴ ProN W3", sans-serif;
 }
 
+.about::first-letter {
+  color: #ea5506;
+}
+
 .flex{
   display: flex;
   justify-content: center;
