@@ -35,7 +35,7 @@
         <th scope="row" class="col-sm-3" >注文ステータス</th>
         <td>
           <span>
-            <%= form_with(model: order, url: admin_order_path(order.id), method: "patch") do |f| %>
+            <%= form_with(model: order, url: admin_order_path(order.id)) do |f| %>
               <div class = "form-groupe row">
                 <div class="col-sm-4">
                   <%= f.collection_select :order_status, [["入金待ち", "wait_payment"],["入金確認", "confirm_payment"],["製作中", "making"],["発送中", "preparing_ship"],["発送済み", "finish_prepare"]], :last, :first %>

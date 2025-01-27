@@ -8,7 +8,7 @@ class Item < ApplicationRecord
   validates :name, presence: true
   validates :introduction, presence: false
   validates :price, presence: true
-  validates :is_active, presence: true
+  validates :is_active, inclusion: { in: [true, false] }
 
   def with_tax_price
     tax_rate = 0.1 # 例として消費税率を10%とします
