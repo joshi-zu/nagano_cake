@@ -7,7 +7,8 @@
       </div>
 
       <div class="row">
-        <table class="table table-bordered col-sm-8 mr-5">
+        <div class="col-sm-8">
+        <table class="table table-bordered mr-5">
           <thead>
             <tr>
               <th class="table-active">商品名</th>
@@ -34,23 +35,26 @@
             </tbody>
           <% end %>
         </table>
+        </div>
 
-        <table class="table table-bordered col-sm-3">
+        <div class="col-sm-3">
+        <table class="table table-bordered">
           <tbody>
             <tr>
-              <th scope="row" class="col-sm-3 table-active">送料</th>
+              <th scope="row" class="col-sm-5 table-active">送料</th>
               <td><%= @shipping_cost %></td>
             </tr>
             <tr>
-              <th scope="row" class="col-sm-3 table-active">商品合計</th>
+              <th scope="row" class="col-sm-5 table-active">商品合計</th>
               <td><%= number_with_delimiter((@cart_items_price), delimiter: ',') %></td>
             </tr>
             <tr>
-              <th scope="row" class="col-sm-3 table-active">請求金額</th>
+              <th scope="row" class="col-sm-5 table-active">請求金額</th>
               <td><%= number_with_delimiter((@total_price), delimiter: ',') %></td>
             </tr>
           </tbody>
         </table>
+        </div>
       </div>
 
       <div class="row mt-4">
