@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   def index
-    @items = Item.page(params[:page])
-    @total_items = Item.count
+    @items = Item.where(is_active: true).page(params[:page])
+    @total_items = Item.where(is_active: true).count
     @genres = Genre.all
   end
 
