@@ -1,1 +1,34 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #6c6b6b;
+}
+
+header, footer, navbar {
+  font-family: "YuGothic", "Yu Gothic", "游ゴシック", sans-serif;
+}
+
+
+header.custom {
+  background-image: url('boke12151212_TP_V4.jpg');
+  color: #a59aca;
+}
+
+.btn-custom {
+  background-color: snow;
+  color: #ea5506;
+  border-color: #f19072;
+  position: relative;
+}
+
+.btn-custom:hover {
+  background-color: #f19072;
+  color: white;
+}
+
+footer.custom {
+  background-image: url('boke12151212_TP_V4.jpg');
+  color: white;
+}
 
