@@ -1,11 +1,11 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <h3 class="col-md-2 table-active font-weight-bold text-center mb-5">ログイン</h3>
+      <h3 class="bg-light col-md-2 table-active font-weight-bold text-center mb-5">ログイン</h3>
 
       <div class="row">
         <div class="col-md-4 ml-5">
-          <h5 class="table-active text-center mb-5">会員の方はこちらからログイン</h5>
+          <h5 class="bg-light table-active text-center mb-5">会員の方はこちらからログイン</h5>
         </div>
       </div>
       <%= form_with model: @customer, url: customer_session_path do |f| %>
@@ -35,7 +35,7 @@
       <% end %>
 
       <div class="mt-4 mb-2">
-        <h5 class="col-md-3 table-active text-center mb-4 ml-5">会員登録がお済みでない方</h5>
+        <h5 class="bg-light col-md-3 table-active text-center mb-4 ml-5">会員登録がお済みでない方</h5>
         <div class="row justify-content-center">
           <div class="col-md-8">
             <p><%= link_to "こちら", new_customer_registration_path %> から新規登録を行ってください。</p>

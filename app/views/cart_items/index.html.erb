@@ -7,12 +7,11 @@
     <%= link_to "カートを空にする", destroy_all_cart_items_path, method: :delete, "data-confirm" => "カートを空にしますか？", class: "btn btn-danger" %>
   </div>
 </div>
-<tr class="table-active">
+<tr class="bg-light">
    <th>商品名</th>
    <th>単価(税込)</th>
    <th>数量</th>
    <th>小計</th>
-   <!--タグの中にbrタグを入れることで空白のセルを作れる-->
    <th><br></th>
 </tr>
  <% @sum = 0 %>
