@@ -6,8 +6,8 @@ class Admin::OrdersController < ApplicationController
   end
 
   def show
-    @orders = Order.all 
     @order = Order.find(params[:id])
+    @Order = Order.find_by(id: params[:id], customer_id: params[:customer_id])
     @orders = Order.where(customer_id:(params[:id]))
     @shipping_cost = 800
   end
@@ -20,7 +20,7 @@ class Admin::OrdersController < ApplicationController
       if @order.order_status == 'confirm_payment'
         @order.order_details.update_all(making_status: 'wait_making')
       end
-  end
+    end
     redirect_to admin_order_path(@order.id)
   end
 
