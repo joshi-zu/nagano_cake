@@ -13,61 +13,28 @@
       <% end %>
       </div>
     </div>
-
-    <div class="col-md-1">
-    </div>
-
-    <div class="col-md-3">
-      <table class="table table-borderless">
-        <thead>
-          <tr>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>商品名</td>
-          </tr>
-          <tr>
-            <td>商品説明</td>
-          </tr>
-          <tr>
-            <td>ジャンル</td>
-          </tr>
-          <tr>
-            <td> 税込価格 <br>(税抜価格)</td>
-          </tr>
-          <tr>
-            <td>販売ステータス</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
         
-    <div class="col-md-4">
+    <div class="col-md-6">
       <table class="table table-borderless">
-        <thead>
-          <tr>
-            <th></th>
-          </tr>
-        </thead>
         <tbody>
           <tr>
+            <th class="col-md-4">商品名</th>
             <td><%= @item.name %></td>
           </tr>
           <tr>
-            <td><%= @item.introduction %></td>
+            <th>商品説明</th>
+            <td><%= @item.introduction %>　</td>
           </tr>
           <tr>
+            <th>ジャンル</th>
             <td><%= @item.genre.name %></td>
           </tr>
           <tr>
+            <th> 税込価格 <br>(税抜価格)</th>
             <td><%= number_with_delimiter((@item.price * 1.1).to_i) %> （<%= number_with_delimiter(@item.price) %>）円</td>
           </tr>
           <tr>
-            <td></td>
-          </tr>
-          <tr>
+            <th>販売ステータス</th>
             <td>
               <span>
                 <%= @item.is_active ? '販売中' : '販売停止中' %>
@@ -76,9 +43,12 @@
           </tr>
         </tbody>
       </table>
-      <%= link_to edit_admin_item_path(@item.id) do %>
-        <button type="edit" class="btn btn-sm btn-success"> 編集する　　</button>
-      <% end %>
+      <div class="d-flex justify-content-center">
+        <%= link_to edit_admin_item_path(@item.id) do %>
+          <button type="edit" class="btn btn-sm btn-success"> 編集する　　</button>
+        <% end %>
+      <div>
     </div>
   </div>
+  <br>
 </div>
