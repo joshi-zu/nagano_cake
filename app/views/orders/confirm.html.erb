@@ -1,0 +1,103 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      
+      <div class="col-sm-2 ml-5">
+        <h5 class="bg-light text-center">注文情報確認</h5>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-8">
+        <table class="table table-bordered mr-5">
+          <thead>
+            <tr>
+              <th class="table-active">商品名</th>
+              <th class="table-active">単価(税込)</th>
+              <th class="table-active">数量</th>
+              <th class="table-active">小計</th>
+            </tr>
+          </thead>
+          <% @cart_items.each do |cart_item| %>
+            <tbody>
+              <tr>
+                <td>
+                  <% if cart_item.item.item_image.attached? %>
+                     <%= image_tag cart_item.item.item_image, size: "80x50" %>
+                  <% else %>
+                     <%= image_tag 'noimage.png', size: "80x50" %>
+                  <% end %>
+                  <%= cart_item.item.name %>
+                </td>
+                <td><%= number_with_delimiter((cart_item.item.price * 1.1).round, delimiter: ',')%></td>
+                <td><%= cart_item.amount %></td>
+                <td><%= number_with_delimiter((cart_item.subtotal * 1.1).round, delimiter: ',') %></td>
+              </tr>
+            </tbody>
+          <% end %>
+        </table>
+        </div>
+
+        <div class="col-sm-3">
+        <table class="table table-bordered">
+          <tbody>
+            <tr>
+              <th scope="row" class="col-sm-5 table-active">送料</th>
+              <td><%= @shipping_cost %></td>
+            </tr>
+            <tr>
+              <th scope="row" class="col-sm-5 table-active">商品合計</th>
+              <td><%= number_with_delimiter((@cart_items_price), delimiter: ',') %></td>
+            </tr>
+            <tr>
+              <th scope="row" class="col-sm-5 table-active">請求金額</th>
+              <td><%= number_with_delimiter((@total_price), delimiter: ',') %></td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+
+      <div class="row mt-4">
+        <div class="col-sm-2 pt-1">
+          <h5 class="font-weight-bold">支払方法</h5>
+        </div>
+        <div class="col-sm-3">
+          <% if @selected_payment_method == "credit_card" %>
+            クレジットカード
+          <% else %>
+            銀行振込
+          <% end %>
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div class="col-sm-2 pt-1">
+          <h5 class="font-weight-bold">お届け先</h5>
+        </div>
+        <div class="col-sm-7">
+          <%= @selected_address %>
+        </div>
+      </div>
+
+      <%= form_with url: orders_path, method: :post do |f| %>
+        <%= hidden_field_tag 'order[payment_method]', @selected_payment_method %>
+        <%= hidden_field_tag 'order[select_address]', @select_address %>
+
+        <% if @select_address == "registered_address" %>
+          <%= hidden_field_tag 'order[address_id]', params[:order][:address_id] %>
+        <% elsif @select_address == "new_address" %>
+          <%= hidden_field_tag 'order[new_postal_code]', params[:order][:new_postal_code] %>
+          <%= hidden_field_tag 'order[new_address]', params[:order][:new_address] %>
+          <%= hidden_field_tag 'order[new_name]', params[:order][:new_name] %>
+        <% elsif @select_address == "customer_address" %>
+          <%= hidden_field_tag 'order[postal_code]', current_customer.postal_code %>
+          <%= hidden_field_tag 'order[address]', current_customer.address %>
+          <%= hidden_field_tag 'order[name]', current_customer.last_name + current_customer.first_name %>
+        <% end %>
+        <div class="row justify-content-center mt-5">
+          <button type="submit" class="btn btn-success">注文を確定する</button>
+        </div>
+        <br>
+      <% end %>
+    </div>
+  </div>
+</div>

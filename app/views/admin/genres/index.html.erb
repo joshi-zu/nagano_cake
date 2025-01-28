@@ -1,0 +1,29 @@
+<div class = "container">
+  <div class = "row">
+    <div class = "col">
+      <span class = "title bg-light" style="font-size: 2rem;">ジャンル一覧・追加</span>
+    </div>
+  </div>
+  <p class = ""><br></p>
+  <div class = "row">
+    <div class = "col-8">    
+      <%= form_with(model: @genre, url: admin_genres_path) do |form| %>
+            <div class = "form-groupe row">
+              <label for"name", class="col-sm-2 col-form-label">ジャンル名</label>
+              <div class="col-sm-6">
+                <%= form.text_field :name,placeholder:"ジャンル名", class:"form-control" %><br>
+              </div>
+              <div class="col-sm-1">
+              <%= form.submit '　新規登録　', class: "btn btn-sm btn-success" %>
+              </div>
+            </div>
+      <% end %>
+    </div>
+  </div>
+  <br>
+  <div class = "row">
+    <div class = "col-4">
+      <%= render 'table', genres: @genres %>
+    </div>
+  </div>
+</div>

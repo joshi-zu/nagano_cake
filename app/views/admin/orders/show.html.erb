@@ -1,0 +1,69 @@
+<div class = "container">
+  <div class = "row">
+    <div class = "col">
+    <span class = "bg-light" style="font-size: 2rem;">注文履歴詳細</span>
+    </div>
+  </div>
+  <br>
+
+  <div class = "row info">
+    <%= render 'information', order: @order %>
+  </div>
+
+  <div class = "row info">
+    <br>
+  </div>
+
+  <div class = "row item">
+    <div class = "col-6">
+      
+      <table >
+        <thead>
+          <tr class="table-active bg-light">
+            <th>商品名</th>
+            <th>単価（税込）</th>
+            <th>数量</th>
+            <th>小計</th>
+            <th></th>
+            <th>製作ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @order.order_details.each do |order_detail| %>
+          <tr>
+            <td><%= order_detail.item.name %></td>
+            <td><%= number_with_delimiter((order_detail.price * 1.1).to_i) %></td>
+            <td><%= order_detail.amount %></td>
+            <td><%= number_with_delimiter(((order_detail.price * 1.1).to_i) * order_detail.amount) %></td>
+            <td></td>
+            <td>
+              <%= form_with(model: order_detail, url: admin_order_detail_path(order_detail.id)) do |f| %>
+                <div class = "form-groupe row">
+                  <div class="col-sm-4">
+                    <%= f.collection_select :making_status, [["制作不可", "impossible_making"],["制作待ち", "wait_making"],["製作中", "making"],["制作完了", "finish"]], :last, :first %>
+                  </div>
+                  <div class="col-sm-2">
+                  </div>
+                  <div class="col-sm-2">
+                    <%= f.submit '変更を保存', class: "btn btn-sm btn-success" %>
+                  </div>
+                </div>
+              <% end %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+    </div>
+
+    <div class = "col-3">
+    </div>
+
+    <div class = "col-3">
+      <%= render 'price', order: @order, shipping_cost: @shipping_cost %>
+    </div>
+    
+  </div>
+
+</div>

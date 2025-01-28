@@ -1,0 +1,31 @@
+ja:
+  enums:
+    order:
+      order_status:
+        wait_payment: '入金待ち'
+        confirm_payment: '入金確認'
+        making: '制作中'
+        preparing_ship: '発送準備中'
+        finish_prepare: '発送済み'
+      payment_method:
+        credit_card: 'クレジットカード'
+        transfer: '銀行振込'
+    order_detail:
+      making_status:
+        impossible_making: '着手不可'
+        wait_making: '制作待ち'
+        making: '制作中'
+        finish: '制作完了'
+  activerecord:
+    attributes:
+      customer:
+        last_name: '姓'
+        first_name: '名'
+        last_name_kana: 'セイ'
+        first_name_kana: 'メイ'
+        postal_code: '郵便番号'
+        address: '住所'
+        phone_number: '電話番号'
+        email: 'メールアドレス'
+        password: 'パスワード'
+        

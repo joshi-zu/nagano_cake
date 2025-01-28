@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="row">
+    <span class = "title bg-light" style="font-size: 2rem;">商品詳細</span>
+  </div>
+  <br>
+  <div class = "row">
+    <div class="col-md-4">
+      <div>
+      <% if @item.item_image.attached? %>
+        <%= image_tag url_for(@item.item_image), size: "300x200" %>
+      <% else %>
+        <%= image_tag 'noimage.png', size: "300x200" %>
+      <% end %>
+      </div>
+    </div>
+        
+    <div class="col-md-6">
+      <table class="table table-borderless">
+        <tbody>
+          <tr>
+            <th class="col-md-4">商品名</th>
+            <td><%= @item.name %></td>
+          </tr>
+          <tr>
+            <th>商品説明</th>
+            <td><%= @item.introduction %>　</td>
+          </tr>
+          <tr>
+            <th>ジャンル</th>
+            <td><%= @item.genre.name %></td>
+          </tr>
+          <tr>
+            <th> 税込価格 <br>(税抜価格)</th>
+            <td><%= number_with_delimiter((@item.price * 1.1).to_i) %> （<%= number_with_delimiter(@item.price) %>）円</td>
+          </tr>
+          <tr>
+            <th>販売ステータス</th>
+            <td>
+              <span>
+                <%= @item.is_active ? '販売中' : '販売停止中' %>
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="d-flex justify-content-center">
+        <%= link_to edit_admin_item_path(@item.id) do %>
+          <button type="edit" class="btn btn-sm btn-success"> 編集する　　</button>
+        <% end %>
+      <div>
+    </div>
+  </div>
+  <br>
+</div>

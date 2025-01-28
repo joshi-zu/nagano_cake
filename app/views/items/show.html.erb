@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3 space-above">
+      <%= render 'genres', genres: @genres %>
+    </div>
+
+    <div class="col-md-4">
+      <div>
+        <% if @item.item_image.attached? %>
+          <%= image_tag @item.item_image, size: "300x200" %>
+        <% else %>
+          <%= image_tag 'noimage', size: "300x200" %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="col-md-5">
+      <table class="table table-borderless">
+        <tr>
+          <td><h5><strong><%= @item.name %></strong></h5></td>
+        </tr>
+        <tr>
+          <td><%= @item.introduction %></td>
+        </tr>
+        <tr><td></td></tr>
+        <tr>
+          <td>¥<%= number_with_delimiter((@item.price * 1.1).round, delimiter: ',') %> (税込)</td>
+        </tr>
+        <tr>
+          <td>
+            <%= form_with model: @cart_item, url: cart_items_path, method: :post, local: true do |f| %>
+              <%= f.label :amount, "個数選択" %>
+              <%= f.select :amount, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] %>
+              <%= f.hidden_field :item_id, value: @item.id %>
+              <%= f.submit "カートに入れる", class: "btn btn-success" %>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+  </div>
+</div>

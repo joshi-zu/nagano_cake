@@ -1,0 +1,58 @@
+    <%= form_with(model: item, url: form_url) do |form| %>
+
+      <div class="form-group row">
+        <label for="image" class="col-sm-3 col-form-label">商品画像</label>
+        <div class="col-sm-8">
+          <%= form.file_field :item_image, accept: "image/*", class: "form-control-file" %>
+        </div>
+      </div>
+
+      <div class = "form-groupe row">
+        <label for"name", class="col-sm-3 col-form-label">商品名</label>
+        <div class="col-sm-8">
+          <%= form.text_field :name,placeholder:"商品名", class:"form-control" %><br>
+        </div>
+      </div>
+
+      <div class = "form-groupe row">
+        <label for"introduction", class="col-sm-3 col-form-label">商品説明</label><br>
+        <div class="col-sm-8">
+          <%= form.text_area :introduction, placeholder:"ここに説明文を記述します", class:"form-control" %><br>
+        </div>
+      </div>
+
+      <div class = "form-groupe row">
+        <label for"genre", class="col-sm-3 col-form-label">ジャンル</label><br>
+        <div class="col-sm-8">
+          <%= form.collection_select :genre_id, Genre.all, :id, :name, include_blank: '--選択してください--' %><br>
+        </div>
+      </div>
+
+      <div class = "form-groupe row">
+        <label for"price", class="col-sm-3 col-form-label">税抜価格</label><br>
+        <div class="col-sm-8">
+          <%= form.number_field :price,placeholder:"1000", class:"form-control" %><br>
+        </div>
+        <div class="col-sm-1">
+          円
+        </div>
+      </div>
+
+      <div class = "form-groupe row">
+        <label for"is_active", class="col-sm-3 col-form-label">販売ステータス</label><br>
+        <div class="col-sm-8 d-flex align-items-center">
+          <%= form.radio_button :is_active, :true %>
+          <%= form.label :is_active, "販売中", value: :true, style: "margin: 3px;" %>
+          <%= form.radio_button :is_active, :false %>
+          <%= form.label :is_active, "販売停止中", value: :false, style: "margin: 3px;" %>
+        </div>
+      </div>
+      <br>
+      <div class = "submit row justify-content-center">
+      <%= form.submit submit_text, class: "btn btn-sm btn-success" %>
+      </div>
+    <% end %>
+    <br>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,44 @@
+<%= stylesheet_link_tag 'item_show_styles.css' %>
+
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-3 space-above">
+      <%= render 'genres', genres: @genres %>
+    </div>
+
+    <div class="col-md-8 offset-md-1">
+      <div class="row">
+        <span class = "title", style="font-size: 2.5rem; display:flex;">
+          <h1 class="bg-light">商品一覧 </h1>
+          <h4 class="bg-light" style = "margin: auto;">(全<%= @total_items %>件)</h4>
+        </span>
+      </div>
+      <br>
+      
+      <div class="row">
+        <% @items.each_slice(4) do |items_row| %>
+          <div class="row">
+            <% items_row.each do |item| %>
+              <div class="col">
+                <p>
+                  <%= link_to item_path(item.id) do %>
+                    <% if item.item_image.attached? %>
+                      <%= image_tag url_for(item.item_image), size: "150x100" %>
+                    <% else %>
+                      <%= image_tag 'noimage.png', size: "150x100" %>
+                    <% end %>
+                  <% end %>
+                </p>
+                <p><%= link_to item.name, item_path(item) %></p>
+                <p>¥<%= number_with_delimiter((item.price * 1.1).to_i) %></p>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+<br>
+    <div class="d-flex justify-content-center">
+    <%= paginate @items, theme: 'twitter-bootstrap-4' %>
+    </div>
+  </div>
+</div>
