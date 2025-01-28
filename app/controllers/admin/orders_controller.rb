@@ -7,7 +7,6 @@ class Admin::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    @Order = Order.find_by(id: params[:id], customer_id: params[:customer_id])
     @orders = Order.where(customer_id:(params[:id]))
     @shipping_cost = 800
   end
